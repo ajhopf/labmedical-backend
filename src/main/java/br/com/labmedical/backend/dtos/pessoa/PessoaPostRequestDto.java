@@ -1,40 +1,20 @@
-package br.com.labmedical.backend.models;
+package br.com.labmedical.backend.dtos.pessoa;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
 
-@MappedSuperclass
-public abstract class Pessoa {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(name = "nome_completo")
+public abstract class PessoaPostRequestDto {
     private String nomeCompleto;
     private String genero;
-
+    @NotNull(message = "É necessário inserir uma data de nascimento.")
     private String dob;
     private String cpf;
     private String rg;
-    //Opções:
-    //Solteiro
-    //Casado
-    //Separado
-    //Divorciado
-    //Viúvo
-    @Column(name = "estado_civil")
+    @NotNull (message = "É necessário inserir um estado civil.")
     private String estadoCivil;
     private String telefone;
-    @Email
+    @NotNull (message = "É necessário inserir um email.")
     private String email;
     private String naturalidade;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getNomeCompleto() {
         return nomeCompleto;

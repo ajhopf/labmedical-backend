@@ -1,30 +1,14 @@
-package br.com.labmedical.backend.models;
+package br.com.labmedical.backend.dtos.pessoa;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-
-@MappedSuperclass
-public abstract class Pessoa {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public abstract class PessoaResponseDto {
     private Long id;
-    @Column(name = "nome_completo")
     private String nomeCompleto;
     private String genero;
-
     private String dob;
     private String cpf;
     private String rg;
-    //Opções:
-    //Solteiro
-    //Casado
-    //Separado
-    //Divorciado
-    //Viúvo
-    @Column(name = "estado_civil")
     private String estadoCivil;
     private String telefone;
-    @Email
     private String email;
     private String naturalidade;
 
