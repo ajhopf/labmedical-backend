@@ -35,4 +35,15 @@ public class TratadorDeErros {
                 .status(HttpStatus.CONFLICT)
                 .body(e.getMessage());
     }
+
+    @ExceptionHandler(EstadoCivilNaoExisteException.class)
+    public ResponseEntity<String> estadoCivilNaoExiste(EstadoCivilNaoExisteException e) {
+        return ResponseEntity.badRequest().body(e.getMessage());
+    }
+
+    @ExceptionHandler(EspecializacaoNaoExisteException.class)
+    public ResponseEntity<String> especializacaoNaoExiste(EspecializacaoNaoExisteException e) {
+        return ResponseEntity.badRequest().body(e.getMessage());
+    }
+
 }

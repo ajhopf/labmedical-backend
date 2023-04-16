@@ -6,6 +6,7 @@ import br.com.labmedical.backend.exceptions.UserAlreadyExistsException;
 import br.com.labmedical.backend.mappers.MedicoMapper;
 import br.com.labmedical.backend.models.Medico;
 import br.com.labmedical.backend.repositories.MedicoRepository;
+import br.com.labmedical.backend.services.helpers.CadastroHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,8 +24,12 @@ public class MedicoService {
              throw new UserAlreadyExistsException("Usuário já cadastrado!");
         }
 
+        CadastroHelper.validarEstadoCivil(medico.getEstadoCivil());
+        CadastroHelper.validarEspecializacao(medico.getEspecializacao());
+
         medico = repository.save(medico);
 
         return mapper.map(medico);
     }
+
 }

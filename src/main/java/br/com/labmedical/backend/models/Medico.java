@@ -8,14 +8,7 @@ import jakarta.persistence.Table;
 public class Medico extends Pessoa {
     private String crm;
     private String especializacao;
-    //Clínico Geral
-    //Anestesista
-    //Dermatologia
-    //Ginecologia
-    //Neurologia
-    //Pediatria
-    //Psiquiatria
-    //Ortopedia
+
     private String senha;
 
     public String getCrm() {
