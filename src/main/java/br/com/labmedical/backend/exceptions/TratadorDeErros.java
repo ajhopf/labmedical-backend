@@ -2,6 +2,7 @@ package br.com.labmedical.backend.exceptions;
 
 import br.com.labmedical.backend.dtos.erros.ErroValidacaoDto;
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -23,6 +24,15 @@ public class TratadorDeErros {
         List<FieldError> erros = ex.getFieldErrors();
 
         return ResponseEntity.badRequest().body(
-                erros.stream().map(ErroValidacaoDto::new).collect(Collectors.toList()));
+                erros.stream()
+                        .map(ErroValidacaoDto::new)
+                        .collect(Collectors.toList()));
+    }
+
+    @ExceptionHandler(UserAlreadyExistsException.class)
+    public ResponseEntity<String> userAlreadyExists(UserAlreadyExistsException e) {
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
+                .body(e.getMessage());
     }
 }
