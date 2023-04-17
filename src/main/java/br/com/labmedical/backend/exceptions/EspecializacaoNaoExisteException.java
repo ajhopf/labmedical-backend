@@ -1,6 +1,6 @@
 package br.com.labmedical.backend.exceptions;
 
-public class EspecializacaoNaoExisteException extends RuntimeException {
+public class EspecializacaoNaoExisteException extends GeneralException {
     public EspecializacaoNaoExisteException() {
         super("Especialização médica deve ser:\nClinico Geral\n" +
                 "Anestesista\n" +

@@ -1,6 +1,6 @@
 package br.com.labmedical.backend.exceptions;
 
-public class DataInvalidaException extends RuntimeException {
+public class DataInvalidaException extends GeneralException {
     public DataInvalidaException() {
         super("Data inválida. Data deve estar no formato dd/MM/yyyy");
     }

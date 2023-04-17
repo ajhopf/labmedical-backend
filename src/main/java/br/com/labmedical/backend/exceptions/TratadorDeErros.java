@@ -37,28 +37,8 @@ public class TratadorDeErros {
                 .body(e.getMessage());
     }
 
-    @ExceptionHandler(EstadoCivilNaoExisteException.class)
-    public ResponseEntity<String> estadoCivilNaoExiste(EstadoCivilNaoExisteException e) {
-        return ResponseEntity.badRequest().body(e.getMessage());
-    }
-
-    @ExceptionHandler(EspecializacaoNaoExisteException.class)
-    public ResponseEntity<String> especializacaoNaoExiste(EspecializacaoNaoExisteException e) {
-        return ResponseEntity.badRequest().body(e.getMessage());
-    }
-
-    @ExceptionHandler(DataInvalidaException.class)
-    public ResponseEntity<String> dataInvalida(DataInvalidaException e) {
-        return ResponseEntity.badRequest().body(e.getMessage());
-    }
-
-    @ExceptionHandler(AlterouRgOuCpfException.class)
-    public ResponseEntity<String> estadoCivilNaoExiste(AlterouRgOuCpfException e) {
-        return ResponseEntity.badRequest().body(e.getMessage());
-    }
-
-    @ExceptionHandler(GeneroNaoCadastradoException.class)
-    public ResponseEntity<String> generoNaoCadastrado(GeneroNaoCadastradoException e) {
+    @ExceptionHandler(GeneralException.class)
+    public ResponseEntity<String> generoNaoCadastrado(GeneralException e) {
         return ResponseEntity.badRequest().body(e.getMessage());
     }
 

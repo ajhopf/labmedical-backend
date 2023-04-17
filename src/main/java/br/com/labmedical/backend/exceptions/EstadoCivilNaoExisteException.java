@@ -1,6 +1,6 @@
 package br.com.labmedical.backend.exceptions;
 
-public class EstadoCivilNaoExisteException extends RuntimeException {
+public class EstadoCivilNaoExisteException extends GeneralException {
     public EstadoCivilNaoExisteException() {
         super("Estado civil deve ser:\nSolteiro\n" +
                 "Casado\n" +
