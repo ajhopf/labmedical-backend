@@ -1,20 +1,26 @@
 package br.com.labmedical.backend.dtos.pessoa;
 
+import br.com.labmedical.backend.validators.dob.Dob;
+import br.com.labmedical.backend.validators.estadocivil.EstadoCivil;
+import br.com.labmedical.backend.validators.genero.Genero;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 
 public abstract class PessoaPostRequestDto {
     private String nomeCompleto;
+    @Genero
     private String genero;
-    @NotNull(message = "É necessário inserir uma data de nascimento.")
+    @NotBlank(message = "É necessário inserir uma data de nascimento.")
+    @Dob
     private String dob;
 //    @CPF
     private String cpf;
     private String rg;
-    @NotNull (message = "É necessário inserir um estado civil.")
+    @NotBlank(message = "É necessário inserir um estado civil.")
+    @EstadoCivil
     private String estadoCivil;
     private String telefone;
-    @NotNull (message = "É necessário inserir um email.")
+    @NotBlank (message = "É necessário inserir um email.")
     @Email
     private String email;
     private String naturalidade;

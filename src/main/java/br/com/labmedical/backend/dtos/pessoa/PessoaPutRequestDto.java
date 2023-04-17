@@ -1,15 +1,22 @@
 package br.com.labmedical.backend.dtos.pessoa;
 
+import br.com.labmedical.backend.validators.dob.Dob;
+import br.com.labmedical.backend.validators.estadocivil.EstadoCivil;
+import br.com.labmedical.backend.validators.genero.Genero;
 import jakarta.validation.constraints.Email;
 import org.hibernate.validator.constraints.br.CPF;
 
 public abstract class PessoaPutRequestDto {
     private String nomeCompleto;
+    @Genero
     private String genero;
+
+    @Dob
     private String dob;
     @CPF
     private String cpf;
     private String rg;
+    @EstadoCivil
     private String estadoCivil;
     private String telefone;
     @Email

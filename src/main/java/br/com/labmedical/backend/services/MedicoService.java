@@ -30,11 +30,6 @@ public class MedicoService {
              throw new UsuarioExistenteException("Usuário já cadastrado!");
         }
 
-        CadastroHelper.validarEstadoCivil(medico.getEstadoCivil());
-        CadastroHelper.validarEspecializacao(medico.getEspecializacao());
-        CadastroHelper.validarDataDeNascimento(medico.getDob());
-        CadastroHelper.validarGenero(medico.getGenero());
-
         medico = repository.save(medico);
 
         return mapper.map(medico);
@@ -61,15 +56,12 @@ public class MedicoService {
             medico.setNomeCompleto(requestDto.getNomeCompleto());
         }
         if (CadastroHelper.contemInformacao(requestDto.getGenero())) {
-            CadastroHelper.validarGenero(requestDto.getGenero());
             medico.setGenero(requestDto.getGenero());
         }
         if (CadastroHelper.contemInformacao(requestDto.getDob())) {
-            CadastroHelper.validarDataDeNascimento(requestDto.getDob());
             medico.setDob(requestDto.getDob());
         }
         if (CadastroHelper.contemInformacao(requestDto.getEstadoCivil())) {
-            CadastroHelper.validarEstadoCivil(requestDto.getEstadoCivil());
             medico.setEstadoCivil(requestDto.getEstadoCivil());
         }
         if (CadastroHelper.contemInformacao(requestDto.getTelefone())) {
@@ -88,7 +80,6 @@ public class MedicoService {
             medico.setCrm(requestDto.getCrm());
         }
         if (requestDto.getEspecializacao() != null && requestDto.getEspecializacao().length() > 0) {
-            CadastroHelper.validarEspecializacao(requestDto.getEspecializacao());
             medico.setEspecializacao(requestDto.getEspecializacao());
         }
         if (requestDto.getSenha() != null && requestDto.getSenha().length() > 0) {

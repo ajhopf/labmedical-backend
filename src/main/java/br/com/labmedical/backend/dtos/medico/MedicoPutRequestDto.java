@@ -1,9 +1,11 @@
 package br.com.labmedical.backend.dtos.medico;
 
 import br.com.labmedical.backend.dtos.pessoa.PessoaPutRequestDto;
+import br.com.labmedical.backend.validators.especializacao.EspecializacaoMedica;
 
 public class MedicoPutRequestDto extends PessoaPutRequestDto {
     private String crm;
+    @EspecializacaoMedica
     private String especializacao;
     private String senha;
 

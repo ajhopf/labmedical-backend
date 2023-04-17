@@ -1,12 +1,14 @@
 package br.com.labmedical.backend.dtos.medico;
 
 import br.com.labmedical.backend.dtos.pessoa.PessoaPostRequestDto;
-import jakarta.validation.constraints.NotNull;
+import br.com.labmedical.backend.validators.especializacao.EspecializacaoMedica;
+import jakarta.validation.constraints.NotBlank;
 
 public class MedicoPostRequestDto extends PessoaPostRequestDto {
-    @NotNull (message = "É necessário inserir o registro CRM.")
+    @NotBlank(message = "É necessário inserir o registro CRM.")
     private String crm;
-    @NotNull (message = "É necessário inserir uma especilização médica.")
+    @NotBlank (message = "É necessário inserir uma especialização médica.")
+    @EspecializacaoMedica
     private String especializacao;
     private String senha;
 
