@@ -31,8 +31,8 @@ public class TratadorDeErros {
                         .collect(Collectors.toList()));
     }
 
-    @ExceptionHandler(UsuarioExistenteException.class)
-    public ResponseEntity<String> usuarioJaExistente(UsuarioExistenteException e) {
+    @ExceptionHandler(EntidadeExistenteException.class)
+    public ResponseEntity<String> usuarioJaExistente(EntidadeExistenteException e) {
         return ResponseEntity
                 .status(HttpStatus.CONFLICT)
                 .body(e.getMessage());
