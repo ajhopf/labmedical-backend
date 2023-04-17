@@ -2,7 +2,7 @@ package br.com.labmedical.backend.services;
 
 import br.com.labmedical.backend.dtos.medico.MedicoPostRequestDto;
 import br.com.labmedical.backend.dtos.medico.MedicoResponseDto;
-import br.com.labmedical.backend.exceptions.UserAlreadyExistsException;
+import br.com.labmedical.backend.exceptions.UsuarioExistenteException;
 import br.com.labmedical.backend.mappers.MedicoMapper;
 import br.com.labmedical.backend.models.Medico;
 import br.com.labmedical.backend.repositories.MedicoRepository;
@@ -21,7 +21,7 @@ public class MedicoService {
         Medico medico = mapper.map(requestDto);
 
         if (repository.findByCpf(medico.getCpf()) != null){
-             throw new UserAlreadyExistsException("Usuário já cadastrado!");
+             throw new UsuarioExistenteException("Usuário já cadastrado!");
         }
 
         CadastroHelper.validarEstadoCivil(medico.getEstadoCivil());

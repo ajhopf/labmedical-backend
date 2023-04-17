@@ -15,12 +15,13 @@ import java.util.stream.Collectors;
 @RestControllerAdvice
 public class TratadorDeErros {
     @ExceptionHandler(EntityNotFoundException.class)
-    public ResponseEntity<Void> trataErro404() {
-        return ResponseEntity.notFound().build();
+    public ResponseEntity<Void> entidadeNaoEncontrada() {
+        return
+                ResponseEntity.notFound().build();
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<List<ErroValidacaoDto>> trataErro400(MethodArgumentNotValidException ex) {
+    public ResponseEntity<List<ErroValidacaoDto>> badRequest(MethodArgumentNotValidException ex) {
         List<FieldError> erros = ex.getFieldErrors();
 
         return ResponseEntity.badRequest().body(
@@ -29,8 +30,8 @@ public class TratadorDeErros {
                         .collect(Collectors.toList()));
     }
 
-    @ExceptionHandler(UserAlreadyExistsException.class)
-    public ResponseEntity<String> userAlreadyExists(UserAlreadyExistsException e) {
+    @ExceptionHandler(UsuarioExistenteException.class)
+    public ResponseEntity<String> usuarioJaExistente(UsuarioExistenteException e) {
         return ResponseEntity
                 .status(HttpStatus.CONFLICT)
                 .body(e.getMessage());
