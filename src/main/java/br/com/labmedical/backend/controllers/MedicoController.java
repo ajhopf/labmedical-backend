@@ -6,19 +6,24 @@ import br.com.labmedical.backend.services.MedicoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/usuarios")
 public class MedicoController {
     @Autowired
     MedicoService service;
+
+    @GetMapping
+    public ResponseEntity<List<MedicoResponseDto>> getMedicos() {
+        List<MedicoResponseDto> medicos = service.getMedicos();
+
+        return ResponseEntity.ok(medicos);
+    }
 
     @PostMapping
     public ResponseEntity<MedicoResponseDto> cadastrarMedico(

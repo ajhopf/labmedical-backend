@@ -10,6 +10,8 @@ import br.com.labmedical.backend.services.helpers.CadastroHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MedicoService {
     @Autowired
@@ -33,4 +35,7 @@ public class MedicoService {
         return mapper.map(medico);
     }
 
+    public List<MedicoResponseDto> getMedicos() {
+        return mapper.map(repository.findAll());
+    }
 }
