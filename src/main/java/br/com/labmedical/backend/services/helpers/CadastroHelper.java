@@ -3,6 +3,7 @@ package br.com.labmedical.backend.services.helpers;
 import br.com.labmedical.backend.exceptions.DataInvalidaException;
 import br.com.labmedical.backend.exceptions.EspecializacaoNaoExisteException;
 import br.com.labmedical.backend.exceptions.EstadoCivilNaoExisteException;
+import br.com.labmedical.backend.exceptions.GeneroNaoCadastradoException;
 import org.apache.commons.validator.GenericValidator;
 
 import java.time.LocalDate;
@@ -44,7 +45,19 @@ public class CadastroHelper {
         };
     }
 
-    public static void validarDataDeNascimento(            String data) {
+    public static void validarGenero(String genero) {
+        List<String> generos = new ArrayList<>();
+
+        generos.add("FEMININO");
+        generos.add("MASCULINO");
+        generos.add("OUTRO");
+
+        if(!generos.contains(genero.toUpperCase())) {
+            throw new GeneroNaoCadastradoException();
+        }
+    }
+
+    public static void validarDataDeNascimento(String data) {
        boolean dataValida =  GenericValidator.isDate(data, "dd/MM/yyyy", true);
 
        if (!dataValida){
@@ -59,7 +72,14 @@ public class CadastroHelper {
        if (dob.isAfter(now)) {
            throw new DataInvalidaException("Data deve ser anterior ao dia atual.");
        }
-
-
     }
+
+    public static boolean contemInformacao(String requestString) {
+        boolean notNull = requestString != null;
+        if (notNull) {
+            return requestString.length() > 0;
+        }
+        return false;
+    }
+
 }

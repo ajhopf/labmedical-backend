@@ -52,4 +52,14 @@ public class TratadorDeErros {
         return ResponseEntity.badRequest().body(e.getMessage());
     }
 
+    @ExceptionHandler(AlterouRgOuCpfException.class)
+    public ResponseEntity<String> estadoCivilNaoExiste(AlterouRgOuCpfException e) {
+        return ResponseEntity.badRequest().body(e.getMessage());
+    }
+
+    @ExceptionHandler(GeneroNaoCadastradoException.class)
+    public ResponseEntity<String> generoNaoCadastrado(GeneroNaoCadastradoException e) {
+        return ResponseEntity.badRequest().body(e.getMessage());
+    }
+
 }
