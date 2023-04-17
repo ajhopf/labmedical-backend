@@ -1,5 +1,6 @@
 package br.com.labmedical.backend.dtos.pessoa;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 
 public abstract class PessoaPostRequestDto {
@@ -7,12 +8,14 @@ public abstract class PessoaPostRequestDto {
     private String genero;
     @NotNull(message = "É necessário inserir uma data de nascimento.")
     private String dob;
+//    @CPF
     private String cpf;
     private String rg;
     @NotNull (message = "É necessário inserir um estado civil.")
     private String estadoCivil;
     private String telefone;
     @NotNull (message = "É necessário inserir um email.")
+    @Email
     private String email;
     private String naturalidade;
 

@@ -47,4 +47,9 @@ public class TratadorDeErros {
         return ResponseEntity.badRequest().body(e.getMessage());
     }
 
+    @ExceptionHandler(DataInvalidaException.class)
+    public ResponseEntity<String> dataInvalida(DataInvalidaException e) {
+        return ResponseEntity.badRequest().body(e.getMessage());
+    }
+
 }

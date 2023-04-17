@@ -26,6 +26,7 @@ public class MedicoService {
 
         CadastroHelper.validarEstadoCivil(medico.getEstadoCivil());
         CadastroHelper.validarEspecializacao(medico.getEspecializacao());
+        CadastroHelper.validarDataDeNascimento(medico.getDob());
 
         medico = repository.save(medico);
 
