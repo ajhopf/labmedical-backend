@@ -1,40 +1,27 @@
-package br.com.labmedical.backend.models;
+package br.com.labmedical.backend.dtos.pessoa;
 
-import jakarta.persistence.*;
+import br.com.labmedical.backend.validators.dob.Dob;
+import br.com.labmedical.backend.validators.estadocivil.EstadoCivil;
+import br.com.labmedical.backend.validators.genero.Genero;
 import jakarta.validation.constraints.Email;
+import org.hibernate.validator.constraints.br.CPF;
 
-@MappedSuperclass
-public abstract class Pessoa {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(name = "nome_completo")
+public abstract class PessoaPutRequestDto {
     private String nomeCompleto;
+    @Genero
     private String genero;
 
+    @Dob
     private String dob;
+    @CPF
     private String cpf;
     private String rg;
-    //Opções:
-    //Solteiro
-    //Casado
-    //Separado
-    //Divorciado
-    //Viúvo
-    @Column(name = "estado_civil")
+    @EstadoCivil
     private String estadoCivil;
     private String telefone;
     @Email
     private String email;
     private String naturalidade;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getNomeCompleto() {
         return nomeCompleto;
