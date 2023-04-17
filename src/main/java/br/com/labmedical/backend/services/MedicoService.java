@@ -2,6 +2,7 @@ package br.com.labmedical.backend.services;
 
 import br.com.labmedical.backend.dtos.medico.MedicoPostRequestDto;
 import br.com.labmedical.backend.dtos.medico.MedicoPutRequestDto;
+import br.com.labmedical.backend.dtos.medico.MedicoAtualizaSenhaDto;
 import br.com.labmedical.backend.dtos.medico.MedicoResponseDto;
 import br.com.labmedical.backend.exceptions.AlterouRgOuCpfException;
 import br.com.labmedical.backend.exceptions.UsuarioExistenteException;
@@ -87,6 +88,15 @@ public class MedicoService {
         }
 
         repository.save(medico);
+
+        return mapper.map(medico);
+    }
+
+    public MedicoResponseDto atualizarSenha(Long id, MedicoAtualizaSenhaDto requestDto) {
+        Medico medico = repository.findById(id)
+                .orElseThrow(EntityNotFoundException::new);
+
+        medico.setSenha(requestDto.getSenha());
 
         return mapper.map(medico);
     }

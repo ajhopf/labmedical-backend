@@ -15,9 +15,10 @@ import java.util.stream.Collectors;
 @RestControllerAdvice
 public class TratadorDeErros {
     @ExceptionHandler(EntityNotFoundException.class)
-    public ResponseEntity<Void> entidadeNaoEncontrada() {
+    public ResponseEntity<String> entidadeNaoEncontrada() {
         return
-                ResponseEntity.notFound().build();
+//                ResponseEntity.notFound().build();
+        ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id informado não retornou nenhuma entidade.");
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
