@@ -48,7 +48,12 @@ public class PacienteService {
        return mapper.map(paciente);
     }
 
-    public List<PacienteResponseDto> getPacientes() {
+    public List<PacienteResponseDto> getPacientes(String nome) {
+        if (nome != null) {
+            List<Paciente> pacientes = repository.findByNome(nome.toUpperCase());
+            return mapper.map(pacientes);
+        }
+
         List<Paciente> pacientes = repository.findAll();
 
         return mapper.map(pacientes);

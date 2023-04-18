@@ -20,8 +20,10 @@ public class PacienteController {
     PacienteService service;
 
     @GetMapping
-    public ResponseEntity<List<PacienteResponseDto>> getPacientes() {
-        List<PacienteResponseDto> pacientes = service.getPacientes();
+    public ResponseEntity<List<PacienteResponseDto>> getPacientes(
+            @RequestParam String nome
+    ) {
+        List<PacienteResponseDto> pacientes = service.getPacientes(nome);
 
         return ResponseEntity.ok(pacientes);
     }
