@@ -6,10 +6,13 @@ import br.com.labmedical.backend.dtos.paciente.PacienteResponseDto;
 import br.com.labmedical.backend.exceptions.AlterouRgOuCpfException;
 import br.com.labmedical.backend.exceptions.EnderecoNaoCadastradoException;
 import br.com.labmedical.backend.exceptions.EntidadeExistenteException;
+import br.com.labmedical.backend.exceptions.PacientePossuiExameOuConsultaException;
 import br.com.labmedical.backend.mappers.PacienteMapper;
 import br.com.labmedical.backend.models.Endereco;
 import br.com.labmedical.backend.models.Paciente;
+import br.com.labmedical.backend.repositories.ConsultaRepository;
 import br.com.labmedical.backend.repositories.EnderecoRepository;
+import br.com.labmedical.backend.repositories.ExameRepository;
 import br.com.labmedical.backend.repositories.PacienteRepository;
 import br.com.labmedical.backend.services.helpers.CadastroHelper;
 import jakarta.persistence.EntityNotFoundException;
@@ -27,6 +30,12 @@ public class PacienteService {
 
     @Autowired
     EnderecoRepository enderecoRepository;
+
+    @Autowired
+    ConsultaRepository consultaRepository;
+
+    @Autowired
+    ExameRepository exameRepository;
 
     @Autowired
     PacienteMapper mapper;
@@ -147,6 +156,14 @@ public class PacienteService {
     public void deletarPaciente(Long identificador) {
         Paciente paciente = repository.findById(identificador)
                 .orElseThrow(EntityNotFoundException::new);
+
+        if (exameRepository.findByPacienteId(identificador).size() > 0) {
+            throw new PacientePossuiExameOuConsultaException("Não é possível deletar o paciente pois ele possui exames vinculados.");
+        };
+
+        if (consultaRepository.findByPacienteId(identificador).size() > 0) {
+            throw new PacientePossuiExameOuConsultaException("Não é possível deletar o paciente pois ele possui consultas vinculadas.");
+        }
 
         repository.delete(paciente);
     }
