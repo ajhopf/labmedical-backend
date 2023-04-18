@@ -42,7 +42,7 @@ public class MedicoService {
 
     public MedicoResponseDto atualizarMedico(Long id, MedicoPutRequestDto requestDto) {
         Medico medico = repository.findById(id)
-                .orElseThrow(EntityNotFoundException::new);
+                .orElseThrow(() -> new EntityNotFoundException("Não foi possível encontra um usuário(médico) com o id " + id + "."));
 
         if (CadastroHelper.contemInformacao(requestDto.getCpf()) && !Objects.equals(medico.getCpf(), requestDto.getCpf())) {
             throw new AlterouRgOuCpfException("Não é possível alterar o CPF de um usuário.");
