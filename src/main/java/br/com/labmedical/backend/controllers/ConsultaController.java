@@ -3,6 +3,7 @@ package br.com.labmedical.backend.controllers;
 import br.com.labmedical.backend.dtos.consulta.ConsultaPostRequestDto;
 import br.com.labmedical.backend.dtos.consulta.ConsultaPutRequestDto;
 import br.com.labmedical.backend.dtos.consulta.ConsultaResponseDto;
+import br.com.labmedical.backend.dtos.exame.ExameResponseDto;
 import br.com.labmedical.backend.services.ConsultaService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,15 @@ import java.net.URI;
 public class ConsultaController {
     @Autowired
     ConsultaService service;
+
+    @GetMapping("/{identificador}")
+    public ResponseEntity<ConsultaResponseDto> getConsulta(
+            @PathVariable Long identificador
+    ) {
+        ConsultaResponseDto consulta = service.getConsulta(identificador);
+
+        return ResponseEntity.ok(consulta);
+    }
 
     @PostMapping
     public ResponseEntity<ConsultaResponseDto> cadastrarConsulta(

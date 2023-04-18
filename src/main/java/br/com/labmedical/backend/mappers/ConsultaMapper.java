@@ -18,5 +18,4 @@ public interface ConsultaMapper {
             @Mapping(target = "identificador", source = "id")
     })
     ConsultaResponseDto map(Consulta source);
-
 }
