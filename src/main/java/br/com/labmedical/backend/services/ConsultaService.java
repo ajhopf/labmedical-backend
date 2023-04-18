@@ -42,7 +42,7 @@ public class ConsultaService {
 
     public ConsultaResponseDto atualizarConsulta(Long identificador, ConsultaPutRequestDto requestDto) {
         Consulta consulta = repository.findById(identificador)
-                .orElseThrow(() -> new EntityNotFoundException("Não foi possível encontrar uma consulta com o id " + identificador));
+                .orElseThrow(() -> new EntityNotFoundException("Não foi possível encontrar uma consulta com o id " + identificador + ". Atualização não realizada."));
 
         if (CadastroHelper.contemInformacao(requestDto.getMotivoDaConsulta())) {
             consulta.setMotivoDaConsulta(requestDto.getMotivoDaConsulta());
