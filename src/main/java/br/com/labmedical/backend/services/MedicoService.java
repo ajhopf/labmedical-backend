@@ -84,9 +84,6 @@ public class MedicoService {
         if (requestDto.getEspecializacao() != null && requestDto.getEspecializacao().length() > 0) {
             medico.setEspecializacao(requestDto.getEspecializacao());
         }
-        if (requestDto.getSenha() != null && requestDto.getSenha().length() > 0) {
-            medico.setSenha(requestDto.getSenha());
-        }
 
         repository.save(medico);
 
