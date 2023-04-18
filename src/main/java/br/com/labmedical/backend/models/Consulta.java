@@ -18,6 +18,8 @@ public class Consulta {
     private String medicacaoReceitada;
     @Column(nullable = false, name = "dosagens_e_precaucoes")
     private String dosagensEPrecaucoes;
+    @ManyToOne
+    private Paciente paciente;
 
     public Long getId() {
         return id;
@@ -65,5 +67,13 @@ public class Consulta {
 
     public void setDosagensEPrecaucoes(String dosagensEPrecaucoes) {
         this.dosagensEPrecaucoes = dosagensEPrecaucoes;
+    }
+
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
     }
 }

@@ -28,7 +28,7 @@ public class ConsultaController {
        ConsultaResponseDto consulta = service.cadastrarConsulta(requestDto);
 
        URI uri = uriBuilder.path("/api/consultas/{id}")
-               .buildAndExpand(consulta.getId())
+               .buildAndExpand(consulta.getIdentificador())
                .toUri();
 
        return ResponseEntity.created(uri).body(consulta);

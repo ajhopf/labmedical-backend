@@ -1,6 +1,7 @@
 package br.com.labmedical.backend.dtos.consulta;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class ConsultaPostRequestDto {
     @NotBlank
@@ -13,6 +14,8 @@ public class ConsultaPostRequestDto {
     private String medicacaoReceitada;
     @NotBlank
     private String dosagensEPrecaucoes;
+    @NotNull
+    private Long pacienteId;
 
     public String getMotivoDaConsulta() {
         return motivoDaConsulta;
@@ -21,14 +24,6 @@ public class ConsultaPostRequestDto {
     public void setMotivoDaConsulta(String motivoDaConsulta) {
         this.motivoDaConsulta = motivoDaConsulta;
     }
-
-//    public String getHoraEData() {
-//        return horaEData;
-//    }
-//
-//    public void setHoraEData(String horaEData) {
-//        this.horaEData = horaEData;
-//    }
 
     public String getDescricaoDoProblema() {
         return descricaoDoProblema;
@@ -52,5 +47,13 @@ public class ConsultaPostRequestDto {
 
     public void setDosagensEPrecaucoes(String dosagensEPrecaucoes) {
         this.dosagensEPrecaucoes = dosagensEPrecaucoes;
+    }
+
+    public Long getPacienteId() {
+        return pacienteId;
+    }
+
+    public void setPacienteId(Long pacienteId) {
+        this.pacienteId = pacienteId;
     }
 }

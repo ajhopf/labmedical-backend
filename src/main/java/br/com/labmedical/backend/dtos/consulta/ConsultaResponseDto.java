@@ -1,19 +1,29 @@
 package br.com.labmedical.backend.dtos.consulta;
 
 public class ConsultaResponseDto {
-    private Long id;
+//    private Long id;
+    private Long identificador;
     private String motivoDaConsulta;
     private String horaEData;
     private String descricaoDoProblema;
     private String medicacaoReceitada;
     private String dosagensEPrecaucoes;
+    private Long indicador_paciente;
 
-    public Long getId() {
-        return id;
+//    public Long getId() {
+//        return id;
+//    }
+//
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
+
+    public Long getIdentificador() {
+        return identificador;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdentificador(Long identificador) {
+        this.identificador = identificador;
     }
 
     public String getMotivoDaConsulta() {
@@ -54,5 +64,13 @@ public class ConsultaResponseDto {
 
     public void setDosagensEPrecaucoes(String dosagensEPrecaucoes) {
         this.dosagensEPrecaucoes = dosagensEPrecaucoes;
+    }
+
+    public Long getIndicador_paciente() {
+        return indicador_paciente;
+    }
+
+    public void setIndicador_paciente(Long indicador_paciente) {
+        this.indicador_paciente = indicador_paciente;
     }
 }
