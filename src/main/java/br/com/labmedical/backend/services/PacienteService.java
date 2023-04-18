@@ -59,6 +59,13 @@ public class PacienteService {
         return mapper.map(pacientes);
     }
 
+    public PacienteResponseDto getPacienteById(Long id) {
+        Paciente paciente = repository.findById(id)
+                .orElseThrow(EntityNotFoundException::new);
+
+        return mapper.map(paciente);
+    }
+
     public PacienteResponseDto atualizarPaciente(Long id, PacientePutRequestDto requestDto) {
         Paciente paciente = repository.findById(id)
                 .orElseThrow(EntityNotFoundException::new);
@@ -134,4 +141,6 @@ public class PacienteService {
 
         return mapper.map(paciente);
     }
+
+
 }

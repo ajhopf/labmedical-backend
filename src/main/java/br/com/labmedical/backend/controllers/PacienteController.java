@@ -28,6 +28,15 @@ public class PacienteController {
         return ResponseEntity.ok(pacientes);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<PacienteResponseDto> getPacienteById(
+            @PathVariable Long id
+    ) {
+        PacienteResponseDto paciente = service.getPacienteById(id);
+
+        return ResponseEntity.ok(paciente);
+    }
+
     @PostMapping
     public ResponseEntity<PacienteResponseDto> cadastrarPaciente(
             @RequestBody @Valid PacientePostRequestDto requestDto,
