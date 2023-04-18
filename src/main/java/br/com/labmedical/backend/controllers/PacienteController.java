@@ -21,18 +21,18 @@ public class PacienteController {
 
     @GetMapping
     public ResponseEntity<List<PacienteResponseDto>> getPacientes(
-            @RequestParam String nome
+            @RequestParam(required = false) String nome
     ) {
         List<PacienteResponseDto> pacientes = service.getPacientes(nome);
 
         return ResponseEntity.ok(pacientes);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{identificador}")
     public ResponseEntity<PacienteResponseDto> getPacienteById(
-            @PathVariable Long id
+            @PathVariable Long identificador
     ) {
-        PacienteResponseDto paciente = service.getPacienteById(id);
+        PacienteResponseDto paciente = service.getPacienteById(identificador);
 
         return ResponseEntity.ok(paciente);
     }
@@ -51,13 +51,23 @@ public class PacienteController {
         return ResponseEntity.created(uri).body(paciente);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{identificador}")
     public ResponseEntity<PacienteResponseDto> atualizarPaciente(
-            @PathVariable Long id,
+            @PathVariable Long identificador,
             @RequestBody @Valid PacientePutRequestDto requestDto
     ) {
-        PacienteResponseDto paciente = service.atualizarPaciente(id, requestDto);
+        PacienteResponseDto paciente = service.atualizarPaciente(identificador, requestDto);
 
         return ResponseEntity.ok(paciente);
     }
+
+    @DeleteMapping("/{identificador}")
+    public ResponseEntity<Void> deletarPaciente(
+            @PathVariable Long identificador
+    ) {
+        service.deletarPaciente(identificador);
+
+        return ResponseEntity.noContent().build();
+    }
+
 }

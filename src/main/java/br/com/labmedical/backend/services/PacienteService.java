@@ -49,6 +49,7 @@ public class PacienteService {
     }
 
     public List<PacienteResponseDto> getPacientes(String nome) {
+        System.out.println(nome);
         if (nome != null) {
             List<Paciente> pacientes = repository.findByNome(nome.toUpperCase());
             return mapper.map(pacientes);
@@ -143,4 +144,10 @@ public class PacienteService {
     }
 
 
+    public void deletarPaciente(Long identificador) {
+        Paciente paciente = repository.findById(identificador)
+                .orElseThrow(EntityNotFoundException::new);
+
+        repository.delete(paciente);
+    }
 }
