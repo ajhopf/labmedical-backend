@@ -25,6 +25,13 @@ public class ConsultaService {
     @Autowired
     ConsultaMapper mapper;
 
+    public ConsultaResponseDto getConsulta(Long identificador) {
+        Consulta consulta = repository.findById(identificador)
+                .orElseThrow(() -> new EntityNotFoundException("Não foi possível econtrar uma consulta com o id " + identificador + "."));
+
+        return mapper.map(consulta);
+    }
+
     public ConsultaResponseDto cadastrarConsulta(ConsultaPostRequestDto requestDto) {
         Paciente paciente = pacienteRepository.findById(requestDto.getPacienteId())
                 .orElseThrow(() -> new EntityNotFoundException("A consulta não foi cadastrada pois não foi possível encontrar um paciente com o id " + requestDto.getPacienteId() + "."));
@@ -74,4 +81,6 @@ public class ConsultaService {
 
         repository.delete(consulta);
     }
+
+
 }
