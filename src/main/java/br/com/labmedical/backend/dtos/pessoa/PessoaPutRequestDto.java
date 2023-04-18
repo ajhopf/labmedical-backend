@@ -10,7 +10,6 @@ public abstract class PessoaPutRequestDto {
     private String nomeCompleto;
     @Genero
     private String genero;
-
     @Dob
     private String dob;
     @CPF

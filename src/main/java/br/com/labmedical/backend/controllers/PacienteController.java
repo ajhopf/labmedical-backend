@@ -1,6 +1,7 @@
 package br.com.labmedical.backend.controllers;
 
 import br.com.labmedical.backend.dtos.paciente.PacientePostRequestDto;
+import br.com.labmedical.backend.dtos.paciente.PacientePutRequestDto;
 import br.com.labmedical.backend.dtos.paciente.PacienteResponseDto;
 import br.com.labmedical.backend.services.PacienteService;
 import jakarta.validation.Valid;
@@ -37,5 +38,15 @@ public class PacienteController {
                 .toUri();
 
         return ResponseEntity.created(uri).body(paciente);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<PacienteResponseDto> atualizarPaciente(
+            @PathVariable Long id,
+            @RequestBody @Valid PacientePutRequestDto requestDto
+    ) {
+        PacienteResponseDto paciente = service.atualizarPaciente(id, requestDto);
+
+        return ResponseEntity.ok(paciente);
     }
 }
