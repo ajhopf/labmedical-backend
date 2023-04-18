@@ -25,6 +25,13 @@ public class ExameService {
     @Autowired
     ExameMapper mapper;
 
+    public ExameResponseDto getExame(Long identificador) {
+        Exame exame = repository.findById(identificador)
+                .orElseThrow(() -> new EntityNotFoundException("Não foi possível econtrar um exame com o id " + identificador + "."));
+
+        return mapper.map(exame);
+    }
+
     public ExameResponseDto cadastrarExame(ExamePostRequestDto requestDto) {
         Paciente paciente = pacienteRepository.findById(requestDto.getPacienteId())
                 .orElseThrow(() -> new EntityNotFoundException("Exame não cadastrado. Não foi possível encontrar o paciente com id " + requestDto.getPacienteId() + " para vincular ao exame."));
@@ -69,4 +76,6 @@ public class ExameService {
 
         return mapper.map(exame);
     }
+
+
 }

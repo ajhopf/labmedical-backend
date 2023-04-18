@@ -18,6 +18,15 @@ public class ExameController {
     @Autowired
     ExameService service;
 
+    @GetMapping("/{identificador}")
+    public ResponseEntity<ExameResponseDto> getExame(
+            @PathVariable Long identificador
+    ) {
+        ExameResponseDto exame = service.getExame(identificador);
+
+        return ResponseEntity.ok(exame);
+    }
+
     @PostMapping
     public ResponseEntity<ExameResponseDto> cadastrarExame(
             @RequestBody @Valid ExamePostRequestDto requestDto,
