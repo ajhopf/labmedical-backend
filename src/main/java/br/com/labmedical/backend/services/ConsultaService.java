@@ -67,4 +67,11 @@ public class ConsultaService {
 
         return mapper.map(consulta);
     }
+
+    public void deletarConsulta(Long identificador) {
+        Consulta consulta = repository.findById(identificador)
+                .orElseThrow(() -> new EntityNotFoundException("Não foi possível excluir a consulta pois não foi encontrada nenhuma consulta com o id " + identificador + "."));
+
+        repository.delete(consulta);
+    }
 }

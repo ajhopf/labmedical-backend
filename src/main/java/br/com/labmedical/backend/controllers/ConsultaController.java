@@ -41,4 +41,13 @@ public class ConsultaController {
 
         return ResponseEntity.ok(consulta);
     }
+
+    @DeleteMapping("/{identificador}")
+    public ResponseEntity<Void> deletarConsulta(
+            @PathVariable Long identificador
+    ) {
+        service.deletarConsulta(identificador);
+
+        return ResponseEntity.noContent().build();
+    }
 }
