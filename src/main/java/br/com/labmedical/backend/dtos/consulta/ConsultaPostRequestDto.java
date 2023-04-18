@@ -6,8 +6,7 @@ import jakarta.validation.constraints.NotNull;
 public class ConsultaPostRequestDto {
     @NotBlank
     private String motivoDaConsulta;
-//    @NotBlank
-//    private String horaEData;
+
     @NotBlank
     private String descricaoDoProblema;
     @NotBlank

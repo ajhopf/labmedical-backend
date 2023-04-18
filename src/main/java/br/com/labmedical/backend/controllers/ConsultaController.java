@@ -1,15 +1,13 @@
 package br.com.labmedical.backend.controllers;
 
 import br.com.labmedical.backend.dtos.consulta.ConsultaPostRequestDto;
+import br.com.labmedical.backend.dtos.consulta.ConsultaPutRequestDto;
 import br.com.labmedical.backend.dtos.consulta.ConsultaResponseDto;
 import br.com.labmedical.backend.services.ConsultaService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
@@ -34,4 +32,13 @@ public class ConsultaController {
        return ResponseEntity.created(uri).body(consulta);
     }
 
+    @PutMapping("/{identificador}")
+    public ResponseEntity<ConsultaResponseDto> atualizarConsulta(
+            @PathVariable Long identificador,
+            @RequestBody ConsultaPutRequestDto requestDto
+            ) {
+        ConsultaResponseDto consulta = service.atualizarConsulta(identificador, requestDto);
+
+        return ResponseEntity.ok(consulta);
+    }
 }
