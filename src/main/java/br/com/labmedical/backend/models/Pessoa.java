@@ -11,16 +11,9 @@ public abstract class Pessoa {
     @Column(name = "nome_completo")
     private String nomeCompleto;
     private String genero;
-
     private String dob;
     private String cpf;
     private String rg;
-    //Opções:
-    //Solteiro
-    //Casado
-    //Separado
-    //Divorciado
-    //Viúvo
     @Column(name = "estado_civil")
     private String estadoCivil;
     private String telefone;
