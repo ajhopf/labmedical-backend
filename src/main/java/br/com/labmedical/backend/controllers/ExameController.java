@@ -50,4 +50,14 @@ public class ExameController {
 
         return ResponseEntity.ok(exame);
     }
+
+    @DeleteMapping("/{identificador}")
+    public ResponseEntity<Void> deletarExame(
+            @PathVariable Long identificador
+    ) {
+        service.deletarExame(identificador);
+
+        return ResponseEntity.noContent().build();
+    }
+
 }

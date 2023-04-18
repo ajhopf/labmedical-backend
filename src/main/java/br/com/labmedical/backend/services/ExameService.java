@@ -78,4 +78,10 @@ public class ExameService {
     }
 
 
+    public void deletarExame(Long identificador) {
+        Exame exame = repository.findById(identificador)
+                .orElseThrow(() -> new EntityNotFoundException("Exclusão não realizada. Não foi possível encontrar um exame com o id " + identificador + "."));
+
+        repository.delete(exame);
+    }
 }
