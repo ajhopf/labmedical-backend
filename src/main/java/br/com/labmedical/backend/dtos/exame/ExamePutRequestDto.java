@@ -7,6 +7,7 @@ public class ExamePutRequestDto {
     private String arquivoDeExame;
     private String resultadoDoExame;
     private Long pacienteId;
+    private Long medicoId;
 
     public String getNomeDoExame() {
         return nomeDoExame;
@@ -54,5 +55,13 @@ public class ExamePutRequestDto {
 
     public void setPacienteId(Long pacienteId) {
         this.pacienteId = pacienteId;
+    }
+
+    public Long getMedicoId() {
+        return medicoId;
+    }
+
+    public void setMedicoId(Long medicoId) {
+        this.medicoId = medicoId;
     }
 }

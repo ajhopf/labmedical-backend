@@ -5,7 +5,7 @@ import org.hibernate.validator.constraints.Length;
 
 public class MedicoAtualizaSenhaDto {
     @NotNull(message = "Você deve informar um campo com o nome de 'senha' no corpo da requisição para atualizar a senha.")
-    @Length(min = 1, message = "A nova senha deve ter pelo menos 1 caractere.")
+    @Length(min = 8, message = "A nova senha deve ter pelo menos 8 caracteres.")
     private String senha;
 
     public String getSenha() {

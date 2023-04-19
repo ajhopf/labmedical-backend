@@ -7,7 +7,6 @@ public class MedicoPutRequestDto extends PessoaPutRequestDto {
     private String crm;
     @EspecializacaoMedica
     private String especializacao;
-    private String senha;
 
     public String getCrm() {
         return crm;
@@ -25,11 +24,4 @@ public class MedicoPutRequestDto extends PessoaPutRequestDto {
         this.especializacao = especializacao;
     }
 
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
 }

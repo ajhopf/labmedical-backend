@@ -14,6 +14,8 @@ public class ConsultaPostRequestDto {
     private String dosagensEPrecaucoes;
     @NotNull
     private Long pacienteId;
+    @NotNull
+    private Long medicoId;
 
     public String getMotivoDaConsulta() {
         return motivoDaConsulta;
@@ -53,5 +55,13 @@ public class ConsultaPostRequestDto {
 
     public void setPacienteId(Long pacienteId) {
         this.pacienteId = pacienteId;
+    }
+
+    public Long getMedicoId() {
+        return medicoId;
+    }
+
+    public void setMedicoId(Long medicoId) {
+        this.medicoId = medicoId;
     }
 }
