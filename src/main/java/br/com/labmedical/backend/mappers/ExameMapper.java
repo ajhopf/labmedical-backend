@@ -10,11 +10,15 @@ import org.mapstruct.ReportingPolicy;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface ExameMapper {
-    @Mapping(target = "paciente.id", source = "pacienteId")
+    @Mappings ({
+            @Mapping(target = "paciente.id", source = "pacienteId"),
+            @Mapping(target = "medico.id", source = "medicoId")
+    })
     Exame map(ExamePostRequestDto source);
 
     @Mappings({
             @Mapping(target = "indicador_paciente", source = "paciente.id"),
+            @Mapping(target = "indicador_medico", source = "medico.id"),
             @Mapping(target = "identificador", source = "id")
     })
     ExameResponseDto map(Exame source);

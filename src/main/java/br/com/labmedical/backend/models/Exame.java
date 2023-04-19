@@ -22,6 +22,8 @@ public class Exame {
     private String resultadoDoExame;
     @ManyToOne
     private Paciente paciente;
+    @ManyToOne
+    private Medico medico;
 
     public Long getId() {
         return id;
@@ -85,5 +87,13 @@ public class Exame {
 
     public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
+    }
+
+    public Medico getMedico() {
+        return medico;
+    }
+
+    public void setMedico(Medico medico) {
+        this.medico = medico;
     }
 }
