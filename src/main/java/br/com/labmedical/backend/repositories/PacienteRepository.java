@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface PacienteRepository extends JpaRepository<Paciente, Long> {
     Paciente findByCpf(String cpf);
-    @Query("SELECT p FROM Paciente p WHERE upper(p.nomeCompleto) LIKE :nome%")
+    @Query("SELECT p FROM Paciente p WHERE upper(p.nomeCompleto) like :nome%")
     List<Paciente> findByNome(String nome);
 }

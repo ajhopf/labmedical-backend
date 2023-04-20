@@ -10,11 +10,16 @@ import org.mapstruct.ReportingPolicy;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface ConsultaMapper {
-    @Mapping(target = "paciente.id", source = "pacienteId")
+    @Mappings ({
+            @Mapping(target = "paciente.id", source = "pacienteId"),
+            @Mapping(target = "medico.id", source = "medicoId")
+    })
+
     Consulta map(ConsultaPostRequestDto source);
 
     @Mappings({
             @Mapping(target = "indicador_paciente", source = "paciente.id"),
+            @Mapping(target = "indicador_medico", source = "medico.id"),
             @Mapping(target = "identificador", source = "id")
     })
     ConsultaResponseDto map(Consulta source);

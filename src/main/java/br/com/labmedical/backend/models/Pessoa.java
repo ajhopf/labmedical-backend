@@ -11,10 +11,12 @@ public abstract class Pessoa {
     @Column(name = "nome_completo")
     private String nomeCompleto;
     private String genero;
+    @Column(nullable = false)
     private String dob;
+    @Column(nullable = false)
     private String cpf;
     private String rg;
-    @Column(name = "estado_civil")
+    @Column(nullable = false, name = "estado_civil")
     private String estadoCivil;
     private String telefone;
     @Email

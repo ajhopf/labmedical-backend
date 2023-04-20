@@ -15,6 +15,8 @@ public class ExamePostRequestDto {
     private String resultadoDoExame;
     @NotNull
     private Long pacienteId;
+    @NotNull
+    private Long medicoId;
 
     public String getNomeDoExame() {
         return nomeDoExame;
@@ -62,5 +64,13 @@ public class ExamePostRequestDto {
 
     public void setPacienteId(Long pacienteId) {
         this.pacienteId = pacienteId;
+    }
+
+    public Long getMedicoId() {
+        return medicoId;
+    }
+
+    public void setMedicoId(Long medicoId) {
+        this.medicoId = medicoId;
     }
 }

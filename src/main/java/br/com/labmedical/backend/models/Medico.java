@@ -1,12 +1,15 @@
 package br.com.labmedical.backend.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "medicos")
 public class Medico extends Pessoa {
+    @Column(nullable = false)
     private String crm;
+    @Column(nullable = false)
     private String especializacao;
 
     private String senha;

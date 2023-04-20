@@ -20,8 +20,6 @@ public class Paciente extends Pessoa{
     private String validadeConvenio;
     @ManyToOne
     private Endereco Endereco;
-    @Column(nullable = false, columnDefinition = "INTEGER DEFAULT 0")
-    private Integer exames;
 
     public String getAlergias() {
         return alergias;
@@ -77,13 +75,5 @@ public class Paciente extends Pessoa{
 
     public void setEndereco(br.com.labmedical.backend.models.Endereco endereco) {
         Endereco = endereco;
-    }
-
-    public Integer getExames() {
-        return exames;
-    }
-
-    public void setExames(Integer exames) {
-        this.exames = exames;
     }
 }

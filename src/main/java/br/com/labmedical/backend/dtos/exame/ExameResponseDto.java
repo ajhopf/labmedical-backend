@@ -8,6 +8,7 @@ public class ExameResponseDto {
     private String arquivoDeExame;
     private String resultadoDoExame;
     private Long indicador_paciente;
+    private Long indicador_medico;
 
     public Long getIdentificador() {
         return identificador;
@@ -63,5 +64,13 @@ public class ExameResponseDto {
 
     public void setIndicador_paciente(Long indicador_paciente) {
         this.indicador_paciente = indicador_paciente;
+    }
+
+    public Long getIndicador_medico() {
+        return indicador_medico;
+    }
+
+    public void setIndicador_medico(Long indicador_medico) {
+        this.indicador_medico = indicador_medico;
     }
 }
