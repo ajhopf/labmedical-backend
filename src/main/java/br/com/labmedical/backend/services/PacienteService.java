@@ -49,30 +49,39 @@ public class PacienteService {
         }
 
        Paciente paciente = mapper.map(requestDto);
-
        paciente = repository.save(paciente);
-       paciente.setEndereco(endereco);
 
-       return mapper.map(paciente);
+       PacienteResponseDto pacienteResponseDto = mapper.map(paciente);
+       pacienteResponseDto.setEndereco(endereco);
+       pacienteResponseDto = setNumeroConsultaExame(pacienteResponseDto);
+
+       return pacienteResponseDto;
     }
 
     public List<PacienteResponseDto> getPacientes(String nome) {
-        System.out.println(nome);
+        List<PacienteResponseDto> pacientes;
+
         if (nome != null) {
-            List<Paciente> pacientes = repository.findByNome(nome.toUpperCase());
-            return mapper.map(pacientes);
+            pacientes = mapper.map(repository.findByNome(nome.toUpperCase()));
+        } else {
+            pacientes = mapper.map(repository.findAll());
         }
 
-        List<Paciente> pacientes = repository.findAll();
+        pacientes.forEach(paciente -> {
+            paciente = setNumeroConsultaExame(paciente);
+        });
 
-        return mapper.map(pacientes);
+        return pacientes;
     }
 
     public PacienteResponseDto getPacienteById(Long id) {
         Paciente paciente = repository.findById(id)
                 .orElseThrow(EntityNotFoundException::new);
 
-        return mapper.map(paciente);
+        PacienteResponseDto pacienteResponseDto = mapper.map(paciente);
+        pacienteResponseDto = setNumeroConsultaExame(pacienteResponseDto);
+
+        return pacienteResponseDto;
     }
 
     public PacienteResponseDto atualizarPaciente(Long id, PacientePutRequestDto requestDto) {
@@ -112,14 +121,6 @@ public class PacienteService {
 
         //Infos de Paciente
 
-        //private String alergias;
-        //    private String cuidadosEspecificos;
-        //    private String contatoDeEmergencia;
-        //    private String convenio;
-        //    private String numeroConvenio;
-        //    @DataValida
-        //    private String validadeConvenio;
-        //    private Long enderecoId;
 
         if (CadastroHelper.contemInformacao(requestDto.getAlergias())) {
             paciente.setAlergias(requestDto.getAlergias());
@@ -148,7 +149,10 @@ public class PacienteService {
 
         repository.save(paciente);
 
-        return mapper.map(paciente);
+        PacienteResponseDto pacienteResponseDto = mapper.map(paciente);
+        pacienteResponseDto = setNumeroConsultaExame(pacienteResponseDto);
+
+        return pacienteResponseDto;
     }
 
 
@@ -165,5 +169,15 @@ public class PacienteService {
         }
 
         repository.delete(paciente);
+    }
+
+    public PacienteResponseDto setNumeroConsultaExame(PacienteResponseDto pacienteResponseDto) {
+        Integer exames = exameRepository.findByPacienteId(pacienteResponseDto.getIdentificador()).size();
+        Integer consultas = consultaRepository.findByPacienteId(pacienteResponseDto.getIdentificador()).size();
+
+        pacienteResponseDto.setExames(exames);
+        pacienteResponseDto.setConsultas(consultas);
+
+        return pacienteResponseDto;
     }
 }
