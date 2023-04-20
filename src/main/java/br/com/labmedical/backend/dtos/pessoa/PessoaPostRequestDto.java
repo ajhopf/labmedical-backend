@@ -15,13 +15,14 @@ public abstract class PessoaPostRequestDto {
     @Dob
     private String dob;
     @CPF
+    @NotBlank
     private String cpf;
     private String rg;
     @NotBlank(message = "É necessário inserir um estado civil.")
     @EstadoCivil
     private String estadoCivil;
     private String telefone;
-    @NotBlank (message = "É necessário inserir um email.")
+    @NotBlank(message = "É necessário inserir um email.")
     @Email
     private String email;
     private String naturalidade;

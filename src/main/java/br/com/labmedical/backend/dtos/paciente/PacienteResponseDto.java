@@ -12,6 +12,7 @@ public class PacienteResponseDto extends PessoaPacienteResponseDto {
     private String numeroConvenio;
     private String validadeConvenio;
     private Endereco endereco;
+    private Integer consultas;
     private Integer exames;
 
     public String getAlergias() {
@@ -68,6 +69,14 @@ public class PacienteResponseDto extends PessoaPacienteResponseDto {
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+
+    public Integer getConsultas() {
+        return consultas;
+    }
+
+    public void setConsultas(Integer consultas) {
+        this.consultas = consultas;
     }
 
     public Integer getExames() {
