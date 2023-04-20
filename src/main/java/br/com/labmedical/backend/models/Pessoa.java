@@ -13,6 +13,7 @@ public abstract class Pessoa {
     private String genero;
     @Column(nullable = false)
     private String dob;
+    @Column(nullable = false)
     private String cpf;
     private String rg;
     @Column(nullable = false, name = "estado_civil")

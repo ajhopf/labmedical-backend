@@ -50,7 +50,6 @@ public class PacienteService {
 
        Paciente paciente = mapper.map(requestDto);
 
-       paciente.setExames(0);
        paciente = repository.save(paciente);
        paciente.setEndereco(endereco);
 
