@@ -4,6 +4,7 @@ public class ExameResponseDto {
     private Long identificador;
     private String nomeDoExame;
     private String tipoDoExame;
+    private String horaEData;
     private String laboratorio;
     private String arquivoDeExame;
     private String resultadoDoExame;
@@ -32,6 +33,14 @@ public class ExameResponseDto {
 
     public void setTipoDoExame(String tipoDoExame) {
         this.tipoDoExame = tipoDoExame;
+    }
+
+    public String getHoraEData() {
+        return horaEData;
+    }
+
+    public void setHoraEData(String horaEData) {
+        this.horaEData = horaEData;
     }
 
     public String getLaboratorio() {
