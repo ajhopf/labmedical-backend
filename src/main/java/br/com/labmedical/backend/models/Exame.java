@@ -21,8 +21,10 @@ public class Exame {
     @Column(nullable = false, name = "resultado_do_exame")
     private String resultadoDoExame;
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Paciente paciente;
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Medico medico;
 
     public Long getId() {

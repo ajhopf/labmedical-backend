@@ -19,8 +19,10 @@ public class Consulta {
     @Column(nullable = false, name = "dosagens_e_precaucoes")
     private String dosagensEPrecaucoes;
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Paciente paciente;
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Medico medico;
 
     public Long getId() {

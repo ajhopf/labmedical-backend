@@ -9,6 +9,7 @@ public class Alergia {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Paciente paciente;
     @Column(nullable = false)
     private String alergia;
