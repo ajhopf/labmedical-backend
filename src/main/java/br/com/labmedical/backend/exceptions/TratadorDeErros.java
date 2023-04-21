@@ -9,6 +9,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,6 +33,15 @@ public class TratadorDeErros {
                 erros.stream()
                         .map(ErroValidacaoDto::new)
                         .collect(Collectors.toList()));
+    }
+
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity<String> typeMismatch(MethodArgumentTypeMismatchException e) {
+
+
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body("mensagem: " + e.getMessage() + "\ncódigo de erro: " + e.getErrorCode());
     }
 
     @ExceptionHandler(EntidadeExistenteException.class)
