@@ -4,9 +4,11 @@ import br.com.labmedical.backend.dtos.pessoa.PessoaPostRequestDto;
 import br.com.labmedical.backend.validators.datavalida.DataValida;
 import jakarta.validation.constraints.NotBlank;
 
+import java.util.List;
+
 public class PacientePostRequestDto extends PessoaPostRequestDto {
-    private String alergias;
-    private String cuidadosEspecificos;
+    private List<String> alergias;
+    private List<String> cuidadosEspecificos;
     @NotBlank
     private String contatoDeEmergencia;
     private String convenio;
@@ -15,19 +17,19 @@ public class PacientePostRequestDto extends PessoaPostRequestDto {
     private String validadeConvenio;
     private Long enderecoId;
 
-    public String getAlergias() {
+    public List<String> getAlergias() {
         return alergias;
     }
 
-    public void setAlergias(String alergias) {
+    public void setAlergias(List<String> alergias) {
         this.alergias = alergias;
     }
 
-    public String getCuidadosEspecificos() {
+    public List<String> getCuidadosEspecificos() {
         return cuidadosEspecificos;
     }
 
-    public void setCuidadosEspecificos(String cuidadosEspecificos) {
+    public void setCuidadosEspecificos(List<String> cuidadosEspecificos) {
         this.cuidadosEspecificos = cuidadosEspecificos;
     }
 
