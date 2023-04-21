@@ -15,8 +15,7 @@ public class EspecializacaoMedicaValidator implements ConstraintValidator<Especi
         }
 
         List<String> especializacoes = new ArrayList<>();
-
-        especializacoes.add("CLINICO GERAL");
+        
         especializacoes.add("CLÍNICO GERAL");
         especializacoes.add("ANESTESISTA");
         especializacoes.add("DERMATOLOGISTA");
