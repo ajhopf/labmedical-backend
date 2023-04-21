@@ -38,21 +38,45 @@ public class PacienteService {
     ExameRepository exameRepository;
 
     @Autowired
+    AlergiaService alergiaService;
+
+    @Autowired
+    CuidadoEspecificoService cuidadoEspecificoService;
+
+    @Autowired
     PacienteMapper mapper;
 
     public PacienteResponseDto cadastrarPaciente(PacientePostRequestDto requestDto) {
        Endereco endereco = enderecoRepository.findById(requestDto.getEnderecoId())
                 .orElseThrow(() -> new EnderecoNaoCadastradoException(requestDto.getEnderecoId()));
 
-        if (repository.findByCpf(requestDto.getCpf()) != null){
+       if (repository.findByCpf(requestDto.getCpf()) != null){
             throw new EntidadeExistenteException("Paciente com cpf " + requestDto.getCpf() + " já cadastrado!");
-        }
+       }
 
        Paciente paciente = mapper.map(requestDto);
        paciente = repository.save(paciente);
 
+       if (requestDto.getAlergias() != null && requestDto.getAlergias().size() > 0) {
+           List<String> alergias = requestDto.getAlergias();
+
+           for (String alergia : alergias) {
+               alergiaService.criarAlergia(paciente, alergia);
+           }
+       }
+
+       if (requestDto.getCuidadosEspecificos() != null && requestDto.getCuidadosEspecificos().size() > 0) {
+           List<String> cuidados = requestDto.getCuidadosEspecificos();
+
+           for (String cuidado : cuidados) {
+               cuidadoEspecificoService.cadastrarCuidado(paciente, cuidado);
+           }
+       }
+
        PacienteResponseDto pacienteResponseDto = mapper.map(paciente);
        pacienteResponseDto.setEndereco(endereco);
+       pacienteResponseDto.setAlergias(alergiaService.getAlergiasDePaciente(pacienteResponseDto.getIdentificador()));
+       pacienteResponseDto.setCuidadosEspecificos(cuidadoEspecificoService.getCuidadosDePaciente(pacienteResponseDto.getIdentificador()));
        pacienteResponseDto = setNumeroConsultaExame(pacienteResponseDto);
 
        return pacienteResponseDto;
@@ -69,6 +93,8 @@ public class PacienteService {
 
         pacientes.forEach(paciente -> {
             paciente = setNumeroConsultaExame(paciente);
+            paciente.setAlergias(alergiaService.getAlergiasDePaciente(paciente.getIdentificador()));
+            paciente.setCuidadosEspecificos(cuidadoEspecificoService.getCuidadosDePaciente(paciente.getIdentificador()));
         });
 
         return pacientes;
@@ -80,6 +106,8 @@ public class PacienteService {
 
         PacienteResponseDto pacienteResponseDto = mapper.map(paciente);
         pacienteResponseDto = setNumeroConsultaExame(pacienteResponseDto);
+        pacienteResponseDto.setAlergias(alergiaService.getAlergiasDePaciente(pacienteResponseDto.getIdentificador()));
+        pacienteResponseDto.setCuidadosEspecificos(cuidadoEspecificoService.getCuidadosDePaciente(pacienteResponseDto.getIdentificador()));
 
         return pacienteResponseDto;
     }
@@ -121,13 +149,20 @@ public class PacienteService {
 
         //Infos de Paciente
 
+        if (requestDto.getAlergias() != null) {
+            alergiaService.deletarAlergiasDePaciente(paciente);
+            for (String alergia : requestDto.getAlergias()) {
+                alergiaService.criarAlergia(paciente, alergia);
+            }
+        }
 
-        if (CadastroHelper.contemInformacao(requestDto.getAlergias())) {
-            paciente.setAlergias(requestDto.getAlergias());
+        if (requestDto.getCuidadosEspecificos() != null) {
+            cuidadoEspecificoService.deletarCuidadosDePaciente(paciente);
+            for (String cuidado : requestDto.getCuidadosEspecificos()) {
+                cuidadoEspecificoService.cadastrarCuidado(paciente, cuidado);
+            }
         }
-        if (CadastroHelper.contemInformacao(requestDto.getCuidadosEspecificos())) {
-            paciente.setCuidadosEspecificos(requestDto.getCuidadosEspecificos());
-        }
+
         if (CadastroHelper.contemInformacao(requestDto.getContatoDeEmergencia())) {
             paciente.setContatoDeEmergencia(requestDto.getContatoDeEmergencia());
         }
@@ -151,6 +186,8 @@ public class PacienteService {
 
         PacienteResponseDto pacienteResponseDto = mapper.map(paciente);
         pacienteResponseDto = setNumeroConsultaExame(pacienteResponseDto);
+        pacienteResponseDto.setAlergias(alergiaService.getAlergiasDePaciente(pacienteResponseDto.getIdentificador()));
+        pacienteResponseDto.setCuidadosEspecificos(cuidadoEspecificoService.getCuidadosDePaciente(pacienteResponseDto.getIdentificador()));
 
         return pacienteResponseDto;
     }
@@ -168,6 +205,8 @@ public class PacienteService {
             throw new PacientePossuiExameOuConsultaException("Não é possível deletar o paciente pois ele possui consultas vinculadas.");
         }
 
+        alergiaService.deletarAlergiasDePaciente(paciente);
+        cuidadoEspecificoService.deletarCuidadosDePaciente(paciente);
         repository.delete(paciente);
     }
 

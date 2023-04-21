@@ -8,9 +8,6 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "pacientes")
 public class Paciente extends Pessoa{
-    private String alergias;
-    @Column(name = "cuidados_especificos")
-    private String cuidadosEspecificos;
     @Column(nullable = false, name = "contato_de_emergencia")
     private String contatoDeEmergencia;
     private String convenio;
@@ -20,22 +17,6 @@ public class Paciente extends Pessoa{
     private String validadeConvenio;
     @ManyToOne
     private Endereco Endereco;
-
-    public String getAlergias() {
-        return alergias;
-    }
-
-    public void setAlergias(String alergias) {
-        this.alergias = alergias;
-    }
-
-    public String getCuidadosEspecificos() {
-        return cuidadosEspecificos;
-    }
-
-    public void setCuidadosEspecificos(String cuidadosEspecificos) {
-        this.cuidadosEspecificos = cuidadosEspecificos;
-    }
 
     public String getContatoDeEmergencia() {
         return contatoDeEmergencia;
