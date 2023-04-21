@@ -4,6 +4,7 @@ import br.com.labmedical.backend.dtos.erros.ErroValidacaoDto;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -38,6 +39,13 @@ public class TratadorDeErros {
         return ResponseEntity
                 .status(HttpStatus.CONFLICT)
                 .body(e.getMessage());
+    }
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<String> naoEraLista(HttpMessageNotReadableException e) {
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body("Cuidados especificos e alergias devem estar em um array.\n" + e.getMessage());
     }
 
     @ExceptionHandler(GeneralException.class)

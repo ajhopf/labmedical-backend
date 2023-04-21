@@ -3,10 +3,12 @@ package br.com.labmedical.backend.dtos.paciente;
 import br.com.labmedical.backend.dtos.pessoa.PessoaPacienteResponseDto;
 import br.com.labmedical.backend.models.Endereco;
 
+import java.util.List;
+
 
 public class PacienteResponseDto extends PessoaPacienteResponseDto {
-    private String alergias;
-    private String cuidadosEspecificos;
+    private List<String> alergias;
+    private List<String> cuidadosEspecificos;
     private String contatoDeEmergencia;
     private String convenio;
     private String numeroConvenio;
@@ -15,19 +17,19 @@ public class PacienteResponseDto extends PessoaPacienteResponseDto {
     private Integer consultas;
     private Integer exames;
 
-    public String getAlergias() {
+    public List<String> getAlergias() {
         return alergias;
     }
 
-    public void setAlergias(String alergias) {
+    public void setAlergias(List<String> alergias) {
         this.alergias = alergias;
     }
 
-    public String getCuidadosEspecificos() {
+    public List<String> getCuidadosEspecificos() {
         return cuidadosEspecificos;
     }
 
-    public void setCuidadosEspecificos(String cuidadosEspecificos) {
+    public void setCuidadosEspecificos(List<String> cuidadosEspecificos) {
         this.cuidadosEspecificos = cuidadosEspecificos;
     }
 
