@@ -156,10 +156,8 @@ INSERT INTO
     NOME_COMPLETO,
     RG,
     TELEFONE,
-    ALERGIAS,
     CONTATO_DE_EMERGENCIA,
     CONVENIO,
-    CUIDADOS_ESPECIFICOS,
     NUMERO_CONVENIO,
     VALIDADE_CONVENIO,
     ENDERECO_ID)
@@ -173,14 +171,22 @@ VALUES (
         'Márcio Samuel das Neves',
         '100715011',
         '(67) 99386-1766',
-        'formiga, abacaxi',
         'Priscila Milena - (67) 2515-2686',
         'UNIMED',
-        null,
         '12345676',
         '12/12/2030',
         1
        );
+
+INSERT INTO ALERGIAS(ALERGIA, PACIENTE_ID)
+VALUES('Formiga', 1);
+INSERT INTO ALERGIAS(ALERGIA, PACIENTE_ID)
+VALUES('Abacaxi', 1);
+INSERT INTO ALERGIAS(ALERGIA, PACIENTE_ID)
+VALUES('Amoxicilina', 1);
+
+INSERT INTO CUIDADOS_ESPECIFICOS(CUIDADO_ESPECIFICO, PACIENTE_ID)
+VALUES('Desorientação, não deixar sozinho', 1);
 
 INSERT INTO
     PACIENTES(
@@ -193,10 +199,8 @@ INSERT INTO
     NOME_COMPLETO,
     RG,
     TELEFONE,
-    ALERGIAS,
     CONTATO_DE_EMERGENCIA,
     CONVENIO,
-    CUIDADOS_ESPECIFICOS,
     NUMERO_CONVENIO,
     VALIDADE_CONVENIO,
     ENDERECO_ID)
@@ -210,14 +214,19 @@ VALUES (
     'Breno Tomás Araújo',
     '230739581',
     '(34) 98889-1181',
-    null,
     'Brenda Marina Valentina - (34) 2971-3504',
-    null,
     null,
     null,
     null,
     4
     );
+
+INSERT INTO ALERGIAS(ALERGIA, PACIENTE_ID)
+VALUES('Aspirina', 2);
+INSERT INTO ALERGIAS(ALERGIA, PACIENTE_ID)
+VALUES('Amendoim', 2);
+INSERT INTO ALERGIAS(ALERGIA, PACIENTE_ID)
+VALUES('Glúten', 2);
 
 /*---------------Consultas------------------*/
 INSERT INTO
