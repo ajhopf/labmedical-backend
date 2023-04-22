@@ -25,7 +25,7 @@ public class Exame {
     private Paciente paciente;
     @ManyToOne
     @JoinColumn(nullable = false)
-    private Medico medico;
+    private Usuario usuario;
 
     public Long getId() {
         return id;
@@ -91,11 +91,11 @@ public class Exame {
         this.paciente = paciente;
     }
 
-    public Medico getMedico() {
-        return medico;
+    public Usuario getMedico() {
+        return usuario;
     }
 
-    public void setMedico(Medico medico) {
-        this.medico = medico;
+    public void setMedico(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

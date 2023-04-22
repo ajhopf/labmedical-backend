@@ -1,6 +1,6 @@
 /*-------------------Médicos---------------------------*/
 INSERT INTO
-    MEDICOS(CPF,
+    USUARIOS(CPF,
             DOB,
             EMAIL,
             ESTADO_CIVIL,
@@ -27,7 +27,7 @@ VALUES
      'branda1234');
 
 INSERT INTO
-    MEDICOS(CPF,
+    USUARIOS(CPF,
             DOB,
             EMAIL,
             ESTADO_CIVIL,

@@ -5,8 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "medicos")
-public class Medico extends Pessoa {
+@Table(name = "usuarios")
+public class Usuario extends Pessoa {
     @Column(nullable = false)
     private String crm;
     @Column(nullable = false)
