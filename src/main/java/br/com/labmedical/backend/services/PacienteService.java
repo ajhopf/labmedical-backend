@@ -50,11 +50,14 @@ public class PacienteService {
        Endereco endereco = enderecoRepository.findById(requestDto.getEnderecoId())
                 .orElseThrow(() -> new EnderecoNaoCadastradoException(requestDto.getEnderecoId()));
 
-       if (repository.findByCpf(requestDto.getCpf()) != null){
-            throw new EntidadeExistenteException("Paciente com cpf " + requestDto.getCpf() + " já cadastrado!");
+       String cpfFormatado = CadastroHelper.formataCpf(requestDto.getCpf());
+
+       if (repository.findByCpf(cpfFormatado) != null){
+            throw new EntidadeExistenteException("Paciente com cpf " + cpfFormatado + " já cadastrado!");
        }
 
        Paciente paciente = mapper.map(requestDto);
+       paciente.setCpf(cpfFormatado);
        paciente = repository.save(paciente);
 
        if (requestDto.getAlergias() != null && requestDto.getAlergias().size() > 0) {
@@ -115,7 +118,7 @@ public class PacienteService {
     public PacienteResponseDto atualizarPaciente(Long id, PacientePutRequestDto requestDto) {
         Paciente paciente = repository.findById(id)
                 .orElseThrow(EntityNotFoundException::new);
-        if (CadastroHelper.contemInformacao(requestDto.getCpf()) && !Objects.equals(paciente.getCpf(), requestDto.getCpf())) {
+        if (CadastroHelper.contemInformacao(requestDto.getCpf()) && !Objects.equals(paciente.getCpf(), CadastroHelper.formataCpf(requestDto.getCpf()))) {
             throw new AlterouRgOuCpfException("Não é possível alterar o CPF de um usuário.");
         }
 

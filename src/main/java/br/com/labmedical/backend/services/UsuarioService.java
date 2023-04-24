@@ -25,12 +25,14 @@ public class UsuarioService {
     UsuarioMapper mapper;
 
     public UsuarioResponseDto cadastrarMedico(UsuarioPostRequestDto requestDto) {
-        Usuario usuario = mapper.map(requestDto);
+        String cpfFormatado = CadastroHelper.formataCpf(requestDto.getCpf());
 
-        if (repository.findByCpf(usuario.getCpf()) != null){
-             throw new EntidadeExistenteException("Usuário com cpf " + usuario.getCpf() + " já cadastrado!");
+        if (repository.findByCpf(cpfFormatado) != null){
+             throw new EntidadeExistenteException("Usuário com cpf " + cpfFormatado + " já cadastrado!");
         }
 
+        Usuario usuario = mapper.map(requestDto);
+        usuario.setCpf(cpfFormatado);
         usuario = repository.save(usuario);
 
         return mapper.map(usuario);
@@ -42,9 +44,9 @@ public class UsuarioService {
 
     public UsuarioResponseDto atualizarMedico(Long id, UsuarioPutRequestDto requestDto) {
         Usuario usuario = repository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Não foi possível encontra um usuário(médico) com o id " + id + "."));
+                .orElseThrow(() -> new EntityNotFoundException("Não foi possível encontrar um usuário(médico) com o id " + id + "."));
 
-        if (CadastroHelper.contemInformacao(requestDto.getCpf()) && !Objects.equals(usuario.getCpf(), requestDto.getCpf())) {
+        if (CadastroHelper.contemInformacao(requestDto.getCpf()) && !Objects.equals(usuario.getCpf(), CadastroHelper.formataCpf(requestDto.getCpf()))) {
             throw new AlterouRgOuCpfException("Não é possível alterar o CPF de um usuário.");
         }
 

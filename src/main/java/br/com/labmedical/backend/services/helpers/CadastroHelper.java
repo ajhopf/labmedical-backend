@@ -9,4 +9,19 @@ public class CadastroHelper {
         return false;
     }
 
+    public static String formataCpf(String cpf) {
+        if (!cpf.contains(".")) {
+            String primeraParte = cpf.substring(0,3);
+            String segundaParte = cpf.substring(3, 6);
+            String terceiraParte = cpf.substring(6,9);
+            String quartaParte;
+            if(cpf.contains("-")){
+                quartaParte = cpf.substring(10);
+            } else {
+                quartaParte = cpf.substring(9);
+            }
+            return primeraParte + "." + segundaParte + "." + terceiraParte + "-" + quartaParte;
+        }
+        return cpf;
+    }
 }
