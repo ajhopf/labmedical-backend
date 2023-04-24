@@ -3,6 +3,7 @@ package br.com.labmedical.backend.dtos.pessoa;
 import br.com.labmedical.backend.validators.dob.Dob;
 import br.com.labmedical.backend.validators.estadocivil.EstadoCivil;
 import br.com.labmedical.backend.validators.genero.Genero;
+import br.com.labmedical.backend.validators.telefonevalido.TelefoneValido;
 import jakarta.validation.constraints.Email;
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -17,6 +18,7 @@ public abstract class PessoaPutRequestDto {
     private String rg;
     @EstadoCivil
     private String estadoCivil;
+    @TelefoneValido
     private String telefone;
     @Email
     private String email;

@@ -24,4 +24,14 @@ public class CadastroHelper {
         }
         return cpf;
     }
+
+    public static String formataTelefone(String telefone) {
+        if (!telefone.contains("-")) {
+            Integer quatroUltimosDigitosIndexInicio = telefone.length() - 4;
+            String telefoneInicio = telefone.substring(0, quatroUltimosDigitosIndexInicio);
+            telefone = telefoneInicio + "-" + telefone.substring(quatroUltimosDigitosIndexInicio);
+        }
+
+        return telefone;
+    }
 }

@@ -58,6 +58,9 @@ public class PacienteService {
 
        Paciente paciente = mapper.map(requestDto);
        paciente.setCpf(cpfFormatado);
+       if (requestDto.getTelefone() != null) {
+            paciente.setTelefone(CadastroHelper.formataTelefone(requestDto.getTelefone()));
+       }
        paciente = repository.save(paciente);
 
        if (requestDto.getAlergias() != null && requestDto.getAlergias().size() > 0) {
@@ -141,7 +144,7 @@ public class PacienteService {
             paciente.setEstadoCivil(requestDto.getEstadoCivil());
         }
         if (CadastroHelper.contemInformacao(requestDto.getTelefone())) {
-            paciente.setTelefone(requestDto.getTelefone());
+            paciente.setTelefone(CadastroHelper.formataTelefone(requestDto.getTelefone()));
         }
         if (CadastroHelper.contemInformacao(requestDto.getEmail())) {
             paciente.setEmail(requestDto.getEmail());

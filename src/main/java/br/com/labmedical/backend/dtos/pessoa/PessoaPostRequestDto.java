@@ -3,9 +3,9 @@ package br.com.labmedical.backend.dtos.pessoa;
 import br.com.labmedical.backend.validators.dob.Dob;
 import br.com.labmedical.backend.validators.estadocivil.EstadoCivil;
 import br.com.labmedical.backend.validators.genero.Genero;
+import br.com.labmedical.backend.validators.telefonevalido.TelefoneValido;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.br.CPF;
 
 public abstract class PessoaPostRequestDto {
@@ -22,7 +22,7 @@ public abstract class PessoaPostRequestDto {
     @NotBlank(message = "É necessário inserir um estado civil.")
     @EstadoCivil
     private String estadoCivil;
-    @Length(min = 8, message = "Telefone deve conter no mínimo 8 dígitos")
+    @TelefoneValido
     private String telefone;
     @Email
     private String email;

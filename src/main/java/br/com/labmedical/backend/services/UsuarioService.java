@@ -33,6 +33,9 @@ public class UsuarioService {
 
         Usuario usuario = mapper.map(requestDto);
         usuario.setCpf(cpfFormatado);
+        if (requestDto.getTelefone() != null) {
+            usuario.setTelefone(CadastroHelper.formataTelefone(requestDto.getTelefone()));
+        }
         usuario = repository.save(usuario);
 
         return mapper.map(usuario);
@@ -69,7 +72,7 @@ public class UsuarioService {
             usuario.setEstadoCivil(requestDto.getEstadoCivil());
         }
         if (CadastroHelper.contemInformacao(requestDto.getTelefone())) {
-            usuario.setTelefone(requestDto.getTelefone());
+            usuario.setTelefone(CadastroHelper.formataTelefone(requestDto.getTelefone()));
         }
         if (CadastroHelper.contemInformacao(requestDto.getEmail())) {
             usuario.setEmail(requestDto.getEmail());
