@@ -57,7 +57,7 @@ public class TratadorDeErros {
     }
 
     @ExceptionHandler(GeneralException.class)
-    public ResponseEntity<String> generoNaoCadastrado(GeneralException e) {
+    public ResponseEntity<String> generalException(GeneralException e) {
         return ResponseEntity.badRequest().body(e.getMessage());
     }
 
