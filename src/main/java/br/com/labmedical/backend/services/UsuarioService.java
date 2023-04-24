@@ -28,7 +28,7 @@ public class UsuarioService {
         Usuario usuario = mapper.map(requestDto);
 
         if (repository.findByCpf(usuario.getCpf()) != null){
-             throw new EntidadeExistenteException("Usuário já cadastrado!");
+             throw new EntidadeExistenteException("Usuário com cpf " + usuario.getCpf() + " já cadastrado!");
         }
 
         usuario = repository.save(usuario);

@@ -15,7 +15,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Constraint(validatedBy = EspecializacaoMedicaValidator.class)
 @Documented
 public @interface EspecializacaoMedica {
-    String message() default "Especialização médica deve ser: Clinico Geral, " +
+    String message() default "Especialização médica deve ser: Clínico Geral (com acento) , " +
             "Anestesista, " +
             "Dermatologista, " +
             "Ginecologista, " +

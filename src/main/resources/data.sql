@@ -236,7 +236,7 @@ INSERT INTO
     HORA_E_DATA,
     MEDICACAO_RECEITADA,
     MOTIVO_DA_CONSULTA,
-    MEDICO_ID,
+    USUARIO_ID,
     PACIENTE_ID)
 VALUES(
           'Tremores, lentidão, caminhar arrastando os pés, postura inclinada para frente. Suspeita de Parkinson, encaminho para ressonância magnética.',
@@ -255,7 +255,7 @@ INSERT INTO
     HORA_E_DATA,
     MEDICACAO_RECEITADA,
     MOTIVO_DA_CONSULTA,
-    MEDICO_ID,
+    USUARIO_ID,
     PACIENTE_ID)
 VALUES(
        'Quadro álgico no punho esquerdo durante movimento de extensão, eva 7; Início após queda de bicicleta',
@@ -274,7 +274,7 @@ INSERT INTO
     HORA_E_DATA,
     MEDICACAO_RECEITADA,
     MOTIVO_DA_CONSULTA,
-    MEDICO_ID,
+    USUARIO_ID,
     PACIENTE_ID)
 VALUES(
           'Retorno após raio-x. Fratura do rádio distal no MSE.',
@@ -293,7 +293,7 @@ INSERT INTO
     HORA_E_DATA,
     MEDICACAO_RECEITADA,
     MOTIVO_DA_CONSULTA,
-    MEDICO_ID,
+    USUARIO_ID,
     PACIENTE_ID)
 VALUES(
           'Após avaliação da ressonância magnética associado a apresentação clínica chegamos ao diagnóstico de Parkinson.',
@@ -315,7 +315,7 @@ INSERT INTO
     NOME_DO_EXAME,
     RESULTADO_DO_EXAME,
     TIPO_DO_EXAME,
-    MEDICO_ID,
+    USUARIO_ID,
     PACIENTE_ID)
 VALUES(
        'https://drmarciosilveira.com/wp-content/uploads/2019/01/caso1b.jpg',
@@ -336,7 +336,7 @@ INSERT INTO
     NOME_DO_EXAME,
     RESULTADO_DO_EXAME,
     TIPO_DO_EXAME,
-    MEDICO_ID,
+    USUARIO_ID,
     PACIENTE_ID)
 VALUES(
           'https://ogimg.infoglobo.com.br/in/21575034-b06-67d/FT1086A/ressonancia.jpg',
@@ -358,7 +358,7 @@ INSERT INTO
     NOME_DO_EXAME,
     RESULTADO_DO_EXAME,
     TIPO_DO_EXAME,
-    MEDICO_ID,
+    USUARIO_ID,
     PACIENTE_ID)
 VALUES(
           'https://www.tuasaude.com/como-entender-o-exame-de-sangue/',
@@ -379,7 +379,7 @@ INSERT INTO
     NOME_DO_EXAME,
     RESULTADO_DO_EXAME,
     TIPO_DO_EXAME,
-    MEDICO_ID,
+    USUARIO_ID,
     PACIENTE_ID)
 VALUES(
           'https://orthoinfo.aaos.org/globalassets/figures/a00753f04.jpg',
