@@ -1,6 +1,6 @@
 /*-------------------Médicos---------------------------*/
 INSERT INTO
-    MEDICOS(CPF,
+    USUARIOS(CPF,
             DOB,
             EMAIL,
             ESTADO_CIVIL,
@@ -21,13 +21,13 @@ VALUES
      'Florianópolis',
      'Brenda Rosa Manuela Melo',
      '368923988',
-     '(42) 98950-7626',
+     '(42)98950-7626',
      '12345',
      'ortopedista',
      'branda1234');
 
 INSERT INTO
-    MEDICOS(CPF,
+    USUARIOS(CPF,
             DOB,
             EMAIL,
             ESTADO_CIVIL,
@@ -48,7 +48,7 @@ VALUES
      'Porto Alegre',
      'André Jaques Hopf',
      '8098963161',
-     '(48) 999030959',
+     '(48)99903-0959',
      '12345',
      'neurologista',
      'andre1234');
@@ -170,7 +170,7 @@ VALUES (
         'Dourados',
         'Márcio Samuel das Neves',
         '100715011',
-        '(67) 99386-1766',
+        '(67)99386-1766',
         'Priscila Milena - (67) 2515-2686',
         'UNIMED',
         '12345676',
@@ -213,7 +213,7 @@ VALUES (
     'Araguari',
     'Breno Tomás Araújo',
     '230739581',
-    '(34) 98889-1181',
+    '(34)98889-1181',
     'Brenda Marina Valentina - (34) 2971-3504',
     null,
     null,
@@ -236,7 +236,7 @@ INSERT INTO
     HORA_E_DATA,
     MEDICACAO_RECEITADA,
     MOTIVO_DA_CONSULTA,
-    MEDICO_ID,
+    USUARIO_ID,
     PACIENTE_ID)
 VALUES(
           'Tremores, lentidão, caminhar arrastando os pés, postura inclinada para frente. Suspeita de Parkinson, encaminho para ressonância magnética.',
@@ -255,7 +255,7 @@ INSERT INTO
     HORA_E_DATA,
     MEDICACAO_RECEITADA,
     MOTIVO_DA_CONSULTA,
-    MEDICO_ID,
+    USUARIO_ID,
     PACIENTE_ID)
 VALUES(
        'Quadro álgico no punho esquerdo durante movimento de extensão, eva 7; Início após queda de bicicleta',
@@ -274,7 +274,7 @@ INSERT INTO
     HORA_E_DATA,
     MEDICACAO_RECEITADA,
     MOTIVO_DA_CONSULTA,
-    MEDICO_ID,
+    USUARIO_ID,
     PACIENTE_ID)
 VALUES(
           'Retorno após raio-x. Fratura do rádio distal no MSE.',
@@ -293,7 +293,7 @@ INSERT INTO
     HORA_E_DATA,
     MEDICACAO_RECEITADA,
     MOTIVO_DA_CONSULTA,
-    MEDICO_ID,
+    USUARIO_ID,
     PACIENTE_ID)
 VALUES(
           'Após avaliação da ressonância magnética associado a apresentação clínica chegamos ao diagnóstico de Parkinson.',
@@ -315,7 +315,7 @@ INSERT INTO
     NOME_DO_EXAME,
     RESULTADO_DO_EXAME,
     TIPO_DO_EXAME,
-    MEDICO_ID,
+    USUARIO_ID,
     PACIENTE_ID)
 VALUES(
        'https://drmarciosilveira.com/wp-content/uploads/2019/01/caso1b.jpg',
@@ -336,7 +336,7 @@ INSERT INTO
     NOME_DO_EXAME,
     RESULTADO_DO_EXAME,
     TIPO_DO_EXAME,
-    MEDICO_ID,
+    USUARIO_ID,
     PACIENTE_ID)
 VALUES(
           'https://ogimg.infoglobo.com.br/in/21575034-b06-67d/FT1086A/ressonancia.jpg',
@@ -358,7 +358,7 @@ INSERT INTO
     NOME_DO_EXAME,
     RESULTADO_DO_EXAME,
     TIPO_DO_EXAME,
-    MEDICO_ID,
+    USUARIO_ID,
     PACIENTE_ID)
 VALUES(
           'https://www.tuasaude.com/como-entender-o-exame-de-sangue/',
@@ -379,7 +379,7 @@ INSERT INTO
     NOME_DO_EXAME,
     RESULTADO_DO_EXAME,
     TIPO_DO_EXAME,
-    MEDICO_ID,
+    USUARIO_ID,
     PACIENTE_ID)
 VALUES(
           'https://orthoinfo.aaos.org/globalassets/figures/a00753f04.jpg',

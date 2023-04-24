@@ -20,7 +20,6 @@ public class EstadoCivilValidator implements ConstraintValidator<EstadoCivil, St
         estados.add("CASADO");
         estados.add("SEPARADO");
         estados.add("DIVORCIADO");
-        estados.add("VIUVO");
         estados.add("VIÚVO");
 
         return estados.contains(value.toUpperCase());

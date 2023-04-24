@@ -37,8 +37,6 @@ public class TratadorDeErros {
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public ResponseEntity<String> typeMismatch(MethodArgumentTypeMismatchException e) {
-
-
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
                 .body("mensagem: " + e.getMessage() + "\ncódigo de erro: " + e.getErrorCode());

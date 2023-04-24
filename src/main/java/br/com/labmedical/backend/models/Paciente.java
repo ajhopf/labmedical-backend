@@ -1,9 +1,6 @@
 package br.com.labmedical.backend.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "pacientes")
@@ -16,6 +13,7 @@ public class Paciente extends Pessoa{
     @Column(name = "validade_convenio")
     private String validadeConvenio;
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Endereco Endereco;
 
     public String getContatoDeEmergencia() {

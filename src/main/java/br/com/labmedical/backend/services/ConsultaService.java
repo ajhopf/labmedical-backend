@@ -5,10 +5,10 @@ import br.com.labmedical.backend.dtos.consulta.ConsultaPutRequestDto;
 import br.com.labmedical.backend.dtos.consulta.ConsultaResponseDto;
 import br.com.labmedical.backend.mappers.ConsultaMapper;
 import br.com.labmedical.backend.models.Consulta;
-import br.com.labmedical.backend.models.Medico;
+import br.com.labmedical.backend.models.Usuario;
 import br.com.labmedical.backend.models.Paciente;
 import br.com.labmedical.backend.repositories.ConsultaRepository;
-import br.com.labmedical.backend.repositories.MedicoRepository;
+import br.com.labmedical.backend.repositories.UsuarioRepository;
 import br.com.labmedical.backend.repositories.PacienteRepository;
 import br.com.labmedical.backend.services.helpers.CadastroHelper;
 import jakarta.persistence.EntityNotFoundException;
@@ -26,7 +26,7 @@ public class ConsultaService {
     PacienteRepository pacienteRepository;
 
     @Autowired
-    MedicoRepository medicoRepository;
+    UsuarioRepository usuarioRepository;
     @Autowired
     ConsultaMapper mapper;
 
@@ -41,7 +41,7 @@ public class ConsultaService {
         Paciente paciente = pacienteRepository.findById(requestDto.getPacienteId())
                 .orElseThrow(() -> new EntityNotFoundException("A consulta não foi cadastrada pois não foi possível encontrar um paciente com o id " + requestDto.getPacienteId() + "."));
 
-        Medico medico = medicoRepository.findById(requestDto.getMedicoId())
+        Usuario usuario = usuarioRepository.findById(requestDto.getMedicoId())
                 .orElseThrow(() -> new EntityNotFoundException("A consulta não foi cadastrada pois não foi possível encontrar um medico com o id " + requestDto.getMedicoId() + "."));
 
         Consulta consulta = mapper.map(requestDto);
@@ -78,10 +78,10 @@ public class ConsultaService {
             consulta.setPaciente(paciente);
         }
         if (requestDto.getMedicoId() != null) {
-            Medico medico = medicoRepository.findById(requestDto.getMedicoId())
+            Usuario usuario = usuarioRepository.findById(requestDto.getMedicoId())
                     .orElseThrow(() -> new EntityNotFoundException("Atualização de consulta não realizada. Não foi possível encontrar um médico com o id " + requestDto.getMedicoId() + "."));
 
-            consulta.setMedico(medico);
+            consulta.setMedico(usuario);
         }
 
         consulta = repository.save(consulta);

@@ -21,9 +21,11 @@ public class Exame {
     @Column(nullable = false, name = "resultado_do_exame")
     private String resultadoDoExame;
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Paciente paciente;
     @ManyToOne
-    private Medico medico;
+    @JoinColumn(nullable = false)
+    private Usuario usuario;
 
     public Long getId() {
         return id;
@@ -89,11 +91,11 @@ public class Exame {
         this.paciente = paciente;
     }
 
-    public Medico getMedico() {
-        return medico;
+    public Usuario getMedico() {
+        return usuario;
     }
 
-    public void setMedico(Medico medico) {
-        this.medico = medico;
+    public void setMedico(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

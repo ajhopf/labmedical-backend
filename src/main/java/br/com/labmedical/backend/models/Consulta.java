@@ -19,9 +19,11 @@ public class Consulta {
     @Column(nullable = false, name = "dosagens_e_precaucoes")
     private String dosagensEPrecaucoes;
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Paciente paciente;
     @ManyToOne
-    private Medico medico;
+    @JoinColumn(nullable = false)
+    private Usuario usuario;
 
     public Long getId() {
         return id;
@@ -79,11 +81,11 @@ public class Consulta {
         this.paciente = paciente;
     }
 
-    public Medico getMedico() {
-        return medico;
+    public Usuario getMedico() {
+        return usuario;
     }
 
-    public void setMedico(Medico medico) {
-        this.medico = medico;
+    public void setMedico(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

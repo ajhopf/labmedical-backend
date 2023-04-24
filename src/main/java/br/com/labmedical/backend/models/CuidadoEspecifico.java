@@ -9,6 +9,7 @@ public class CuidadoEspecifico {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Paciente paciente;
     @Column(nullable = false, name = "cuidado_especifico")
     private String cuidadoEspecial;
