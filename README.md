@@ -40,6 +40,7 @@
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 - [Executando a aplicação](#executando-a-aplicação)
 - [Melhorias futuras](#melhorias-futuras)
+- [Vídeo Explicativo](#link-para-vídeo-explicativo-do-sistema)
 
 <hr>
 
@@ -419,6 +420,11 @@ Alguns pontos que ainda podem ser melhorados neste projeto:
 * Refatorar os métodos de atualização das entidades;
 * Integrar o sistema com o front-end.
 
+<hr>
+
+## Link para vídeo explicativo do sistema
+
+[Link para o vídeo](https://drive.google.com/file/d/1KFtc0iECGQWmDcWPjFYt4XvZ3yQ38-Pw/view?usp=sharing)
 
 
 
