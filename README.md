@@ -350,7 +350,7 @@ Reposta em caso de tentativa de cadastro de um CPF já cadastrado na tabela.
 
 ## Collection Postman
 
-Você pode encontrar uma collection do postman contendo todos os endpoints e exemplos de requisição [aqui](). 
+Você pode encontrar uma collection do postman contendo todos os endpoints e exemplos de requisição na pasta raiz deste projeto. [arquivo](https://github.com/ajhopf/labmedical-backend/blob/main/Labmedical.postman_collection.json).
 
 <hr>
 
