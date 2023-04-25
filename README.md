@@ -1,4 +1,4 @@
-# labMedical - Backend
+# APIMedical
 
 ## Conteúdos:
 
@@ -45,7 +45,7 @@
 
 ## Introdução
 
-Bem vindo ao back-end do sistema labMedical!
+Bem vindo ao back-end do sistema labMedical - a APIMedical!
 
 Esta é uma API Rest desenvolvida em Java utilizando o framework Spring e o banco de dados SQL Oracle.
 
@@ -173,6 +173,7 @@ Exemplo de requisição válida:
 
 * Método: GET
 * Endpoint: /api/pacientes
+* Este endpoint pode receber um query param opcional ("nome") que, se utilizado, irá fazer a filtragem do resultado pelo nome do paciente.
 
 ### 4. Listagem de um paciente pelo identificador
 
