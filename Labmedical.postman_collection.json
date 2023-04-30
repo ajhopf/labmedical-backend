@@ -1,9 +1,10 @@
 {
 	"info": {
-		"_postman_id": "8d0dc107-ca41-46e1-b284-cd28539fd156",
+		"_postman_id": "413272ba-1f75-409d-b8da-984c512368d9",
 		"name": "Labmedical",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "23195630"
+		"_exporter_id": "23195630",
+		"_collection_link": "https://interstellar-firefly-305486.postman.co/workspace/collection~d72d36a0-6845-4a4d-855c-abf9d1b24687/collection/23195630-413272ba-1f75-409d-b8da-984c512368d9?action=share&creator=23195630&source=collection_link"
 	},
 	"item": [
 		{
@@ -48,7 +49,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nomeCompleto\": \"Ricardo Levi Noah Nunes\",\r\n    \"genero\": \"masculino\",\r\n    \"dob\": \"07/02/1984\",\r\n    \"cpf\": \"972.643.066-66\",\r\n    \"rg\": \"209760606\",\r\n    \"estadoCivil\": \"solteiro\",\r\n    \"telefone\": \"(86) 987539880\",\r\n    \"email\": \"andre.hopf@hotmail.com\",\r\n    \"naturalidade\": \"brasileiro\",\r\n    \"crm\": \"1234568\",\r\n    \"especializacao\": \"Neurologista\",\r\n    \"senha\": \"ricardo123\"\r\n}",
+							"raw": "{\r\n    \"nomeCompleto\": \"Ricardo Levi Noah Nunes\",\r\n    \"genero\": \"masculino\",\r\n    \"dob\": \"07/02/1984\",\r\n    \"cpf\": \"972.643.066-66\",\r\n    \"rg\": \"209760606\",\r\n    \"estadoCivil\": \"solteiro\",\r\n    \"telefone\": \"(86)987539880\",\r\n    \"email\": \"andre.hopf@hotmail.com\",\r\n    \"naturalidade\": \"brasileiro\",\r\n    \"crm\": \"1234568\",\r\n    \"especializacao\": \"Neurologista\",\r\n    \"senha\": \"ricardo123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -77,7 +78,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nomeCompleto\": \"Fernanda Lúcia Clarice Assis\",\r\n    \"genero\": \"feminino\",\r\n    \"estadoCivil\": \"casado\",\r\n    \"dob\": \"24/01/1974\",\r\n    \"telefone\": \"(27) 981572149\",\r\n    \"email\": \"fernanda.lucia.assis@mciimoveis.com.br\",\r\n    \"naturalidade\": \"Guarapari\",\r\n    \"especializacao\": \"Ginecologista\",\r\n    \"crm\": \"14878482\"\r\n}",
+							"raw": "{\r\n    \"nomeCompleto\": \"Fernanda Lúcia Clarice Assis\",\r\n    \"genero\": \"feminino\",\r\n    \"estadoCivil\": \"casado\",\r\n    \"dob\": \"24/01/1974\",\r\n    \"telefone\": \"(27)981572149\",\r\n    \"email\": \"fernanda.lucia.assis@mciimoveis.com.br\",\r\n    \"naturalidade\": \"Guarapari\",\r\n    \"especializacao\": \"Ginecologista\",\r\n    \"crm\": \"14878482\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -258,7 +259,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/pacientes/3",
+							"raw": "http://localhost:8080/api/pacientes/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -267,7 +268,7 @@
 							"path": [
 								"api",
 								"pacientes",
-								"3"
+								"2"
 							]
 						}
 					},
@@ -309,7 +310,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nomeCompleto\": \"André\",\r\n    \"genero\": \"masculino\",\r\n    \"dob\": \"14/03/1992\",\r\n    \"estadoCivil\": \"solteiro\",\r\n    \"telefone\": \"48999030959\",\r\n    \"email\": \"andre.hopf@hotmail.com\",\r\n    \"alergias\": [\r\n        \"formiga\"\r\n    ],  \r\n    \"naturalidade\": \"brasileiro\",\r\n    \"cuidadosEspecificos\": [],\r\n    \"contatoDeEmergencia\": \"1\",\r\n    \"convenio\": \"ok\",\r\n    \"validadeConvenio\": \"30/03/2030\",\r\n    \"enderecoId\": 4\r\n}",
+							"raw": "{\r\n    \"nomeCompleto\": \"André\",\r\n    \"genero\": \"masculino\",\r\n    \"dob\": \"14/03/1992\",\r\n    \"estadoCivil\": \"solteiro\",\r\n    \"telefone\": \"(48)999030959\",\r\n    \"email\": \"andre.hopf@hotmail.com\",\r\n    \"alergias\": [\r\n        \"formiga\"\r\n    ],  \r\n    \"naturalidade\": \"brasileiro\",\r\n    \"cuidadosEspecificos\": [\"sensível\"],\r\n    \"contatoDeEmergencia\": \"1\",\r\n    \"convenio\": \"ok\",\r\n    \"validadeConvenio\": \"30/03/2030\",\r\n    \"enderecoId\": 4\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -317,7 +318,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/pacientes/3",
+							"raw": "http://localhost:8080/api/pacientes/4",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -326,7 +327,7 @@
 							"path": [
 								"api",
 								"pacientes",
-								"3"
+								"4"
 							]
 						}
 					},
